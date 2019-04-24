@@ -20,6 +20,23 @@
       <meta name="twitter:description" property="og:description" content="The world's best site, our website." />
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
       <link rel="stylesheet" href="/J1.css">
+	  <style>
+a:link, a:visited {
+  background-color: rgb(125, 45, 235);
+  background-color: rgba(125, 45, 235, 0.8);
+  color: white;
+  padding: 15px 25px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  border-radius:5px;
+}
+
+a:hover, a:active {
+   background-color: rgb(80, 30, 155);
+   background-color: rgba(80, 30, 155, 0.8);
+}
+      </style>
    </head>
    <body>
       <a id="top"></a>
@@ -71,13 +88,12 @@
          </div>
          <div class="rightcolumn">
             <div class="card">
-               <h2>Coming soon...</h2>
-               <div class="fakeimg" style="height:100px;">???</div>
-               <p>??????????</p>
+               <h2>&lt;&sol;Source_code&gt;</h2>
+               <p><a href='https://github.com/Joe-abdo/website_files.git' target="_blank"><b>Download here</b></a></p>
             </div>
             <div class="card">
                <h3>Website version</h3>
-               <p>Beta 1.0.7</p>
+               <p>Beta 1.0.8</p>
             </div>
          </div>
       </div>

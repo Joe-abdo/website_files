@@ -108,12 +108,12 @@ $conn->close();
             </div>
             <div class="card">
                <h3>Website version</h3>
-               <p>Beta 1.0.7</p>
+               <p>Beta 1.0.8</p>
             </div>
          </div>
       </div>
       <div class="footer">
          <h2>&copy;Copyright Joe-abdo technologies.co.ltd <?php echo date("Y"); ?></h2>
       </div>
-<!-- body -->
+  <!-- body -->
 </html>
