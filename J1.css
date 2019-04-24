@@ -195,6 +195,17 @@
         hyphens: auto;
 }
 
+a.link:link, a.link:visited {
+  color: rgb(125, 45, 235);
+  color: rgba(125, 45, 235, 0.8); 
+  text-decoration: none;
+}
+
+a.link:hover, a.link:active {
+   color: rgb(80, 30, 155);
+   color: rgba(80, 30, 155, 0.8);
+}
+
  .row:after,.card:after {
      content: "";
      display: table;
