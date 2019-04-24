@@ -21,7 +21,7 @@
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
       <link rel="stylesheet" href="/J1.css">
 	  <style>
-a:link, a:visited {
+a.download:link, a.download:visited {
   background-color: rgb(125, 45, 235);
   background-color: rgba(125, 45, 235, 0.8);
   color: white;
@@ -32,7 +32,7 @@ a:link, a:visited {
   border-radius:5px;
 }
 
-a:hover, a:active {
+a.download:hover, a.download:active {
    background-color: rgb(80, 30, 155);
    background-color: rgba(80, 30, 155, 0.8);
 }
@@ -89,7 +89,7 @@ a:hover, a:active {
          <div class="rightcolumn">
             <div class="card">
                <h2>&lt;&sol;Source_code&gt;</h2>
-               <p><a href='https://github.com/Joe-abdo/website_files.git' target="_blank"><b>Download here</b></a></p>
+               <p><a href='https://github.com/Joe-abdo/website_files.git' target="_blank" class='download' ><b>Download here</b></a></p>
             </div>
             <div class="card">
                <h3>Website version</h3>
