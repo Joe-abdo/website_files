@@ -1,0 +1,15 @@
+# HTID:5182687: DO NOT REMOVE OR MODIFY THIS LINE AND THE LINES BELOW
+php_value display_errors 1
+# DO NOT REMOVE OR MODIFY THIS LINE AND THE LINES ABOVE HTID:5182687:
+
+ErrorDocument 404 /404.php
+ErrorDocument 403 /404.php
+
+RewriteEngine On
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^([^\.]+)$ $1.php [NC,L]
+
+<files connect.php>
+order allow,deny
+deny from all
+</files>
