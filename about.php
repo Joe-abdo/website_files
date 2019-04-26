@@ -5,7 +5,7 @@
       <meta charset="utf-8" />
       <meta name="google" content="notranslate">
       <link rel="icon" href="/favicon.ico" type="image/x-icon">
-      <link id="favicon" rel="shortcut icon" href="/favicon.ico">
+      <link rel="shortcut icon" href="/favicon.ico">
       <link id="favicon" rel="apple-touch-icon image_src" href="/favicon.png">
       <meta name="description" content="The world's best site, our website."/>
       <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, minimum-scale=1.0">
@@ -93,7 +93,7 @@ a.download:hover, a.download:active {
             </div>
             <div class="card">
                <h3>Website version</h3>
-               <p>Beta 1.1.0</p>
+               <p>Beta 1.1.1</p>
             </div>
          </div>
       </div>

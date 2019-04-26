@@ -5,7 +5,7 @@
       <meta charset="utf-8" />
 	  <meta name="google" content="notranslate" />
         <link rel="icon" href="/favicon.ico" type="image/x-icon">
-        <link id="favicon" rel="shortcut icon" href="/favicon.ico">
+        <link rel="shortcut icon" href="/favicon.ico">
         <link id="favicon" rel="apple-touch-icon image_src" href="/favicon.png">
         <meta name="description" content="The world's best site, our website."/>
         <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, minimum-scale=1.0">
@@ -60,15 +60,16 @@
 
 <?php
 include_once('connect.php');
-$sql    = "SELECT id, file, image, date ,time FROM table1 ORDER BY id DESC";
+$sql    = "SELECT id, file, image, image_name, date ,time FROM table1 ORDER BY id DESC";
 $result = $conn->query($sql);
 $url    = '@(http(s)?)?(://)?(([a-zA-Z])([-\w]+\.)+([^\s\.]+[^\s]*)+[^,.\s])@';
 if ($result->num_rows > 0) {
     while ($row = $result->fetch_assoc()) {
+		$ext     = pathinfo($row['image_name'], PATHINFO_EXTENSION);
         echo "<div class='card'>
 				<p style='color:grey;font-size:13px'>id:" . $row["id"] . "- </p>
 				<p>" . nl2br(preg_replace($url, '<a href="http$2://$4" target="_blank" title="$0" class="link">$0</a>', htmlspecialchars($row["file"]))) . "</p>
-				" . ((isset($row['image']) && !empty($row['image'])) ? '<img src="data:image/jpeg;base64,' . base64_encode($row['image']) . '" style="max-width: 100%;max-height:500px;" alt="Image_missing"/>' : '') . "
+				" . ((isset($row['image']) && !empty($row['image'])) ? '<img src="data:image/' . $ext . ';base64,' . base64_encode($row['image']) . '" style="max-width: 100%;max-height:500px;" alt="Image_missing"/>' : '') . "
 				<p style='color:grey;font-size:13px;text-align:right;'>" . date('j M Y', strtotime($row["date"])) . " at " . date('g:i a', strtotime($row["time"])) . "</p>
 			 </div>";
     }
@@ -96,7 +97,7 @@ $conn->close();
             </div>
             <div class="card">
                <h3>Website version</h3>
-               <p>Beta 1.1.0</p>
+               <p>Beta 1.1.1</p>
             </div>
          </div>
       </div>

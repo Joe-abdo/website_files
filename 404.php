@@ -5,7 +5,7 @@
       <meta charset="utf-8" />
 	  <meta name="google" content="notranslate">
         <link rel="icon" href="/favicon.ico" type="image/x-icon">
-        <link id="favicon" rel="shortcut icon" href="/favicon.ico">
+        <link rel="shortcut icon" href="/favicon.ico">
         <link id="favicon" rel="apple-touch-icon image_src" href="/favicon.png">
 
         <meta name="description" content="The world's best site, our website."/>
