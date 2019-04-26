@@ -60,33 +60,21 @@
 
 <?php
 include_once('connect.php');
-
-$sql = "SELECT id, file, image, date ,time FROM table1 ORDER BY id DESC";
-
+$sql    = "SELECT id, file, image, date ,time FROM table1 ORDER BY id DESC";
 $result = $conn->query($sql);
-$url = '@(http(s)?)?(://)?(([a-zA-Z])([-\w]+\.)+([^\s\.]+[^\s]*)+[^,.\s])@';
+$url    = '@(http(s)?)?(://)?(([a-zA-Z])([-\w]+\.)+([^\s\.]+[^\s]*)+[^,.\s])@';
 if ($result->num_rows > 0) {
-    // output data of each row
-    while($row = $result->fetch_assoc()) {
-        if (isset($row['image']) && !empty($row['image'])) {
+    while ($row = $result->fetch_assoc()) {
         echo "<div class='card'>
-		         <p style='color:grey;font-size:13px'>id:". $row["id"]. "- </p>
-				 <p>". nl2br(preg_replace($url, '<a href="http$2://$4" target="_blank" title="$0" class="link">$0</a>', htmlspecialchars($row["file"]))). "</p>
-				 <img src='data:image/jpeg;base64,".base64_encode(  $row['image'] )."' style='max-width: 100%;max-height:500px;' alt='Image_missing'/>
-		         <p style='color:grey;font-size:13px;text-align:right;'>".date('j M Y',strtotime( $row["date"] )). "&nbsp;at&nbsp;".date('g:i a', strtotime( $row["time"] )). "</p>
-       		  </div>";
-		} else {
-			echo "<div class='card'>
-		         <p style='color:grey;font-size:13px'>id:". $row["id"]. "- </p>
-				 <p>". nl2br(preg_replace($url, '<a href="http$2://$4" target="_blank" title="$0" class="link">$0</a>', htmlspecialchars($row["file"]))). "</p>
-		         <p style='color:grey;font-size:13px;text-align:right;'>".date('j M Y',strtotime( $row["date"] )). "&nbsp;at&nbsp;".date('g:i a', strtotime( $row["time"] )). "</p>
-       		  </div>";
-		}
+				<p style='color:grey;font-size:13px'>id:" . $row["id"] . "- </p>
+				<p>" . nl2br(preg_replace($url, '<a href="http$2://$4" target="_blank" title="$0" class="link">$0</a>', htmlspecialchars($row["file"]))) . "</p>
+				" . ((isset($row['image']) && !empty($row['image'])) ? '<img src="data:image/jpeg;base64,' . base64_encode($row['image']) . '" style="max-width: 100%;max-height:500px;" alt="Image_missing"/>' : '') . "
+				<p style='color:grey;font-size:13px;text-align:right;'>" . date('j M Y', strtotime($row["date"])) . " at " . date('g:i a', strtotime($row["time"])) . "</p>
+			 </div>";
     }
 } else {
-    echo "<div class='card'> Website's empty, what a fucking suprise... </div>" ;
+    echo "<div class='card'> Website's empty, what a fucking suprise... </div>";
 }
-
 $conn->close();
 ?>
          </div>
@@ -108,7 +96,7 @@ $conn->close();
             </div>
             <div class="card">
                <h3>Website version</h3>
-               <p>Beta 1.0.9</p>
+               <p>Beta 1.1.0</p>
             </div>
          </div>
       </div>

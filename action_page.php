@@ -69,7 +69,7 @@ $time = "CURTIME()";
 
 mysqli_query($conn, "SET SESSION time_zone = '+3:00'");
 
-$image_name = addslashes(strtolower($_FILES['image']['name']));
+$image_name = mysqli_real_escape_string($conn,strtolower($_FILES['image']['name']));
 if (!empty($_FILES['image']['tmp_name']) && file_exists($_FILES['image']['tmp_name'])) {
     
     $allowed = array(
@@ -91,8 +91,8 @@ if (!empty($_FILES['image']['tmp_name']) && file_exists($_FILES['image']['tmp_na
                 $image = "";
                 $txt   = "";
             } else {
-                $image = addslashes(file_get_contents($_FILES['image']['tmp_name']));
-                $txt   = trim(addslashes($_POST['file']));
+                $image = mysqli_real_escape_string($conn,file_get_contents($_FILES['image']['tmp_name']));
+                $txt   = trim(mysqli_real_escape_string($conn,$_POST['file']));
             }
         } else {
             echo "<p>File is not an image.</p>";
@@ -102,7 +102,7 @@ if (!empty($_FILES['image']['tmp_name']) && file_exists($_FILES['image']['tmp_na
     }
 } else {
     $image = "";
-    $txt   = trim(addslashes($_POST['file']));
+    $txt   = trim(mysqli_real_escape_string($conn,$_POST['file']));
 }
 
 if (empty($txt) && empty($image)) {
@@ -119,5 +119,5 @@ mysqli_close($conn);
 ?>
 			</div>
       </div>
-	  <!-- body -->
+  <!-- body -->
 </html>

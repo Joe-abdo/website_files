@@ -93,7 +93,7 @@ a.download:hover, a.download:active {
             </div>
             <div class="card">
                <h3>Website version</h3>
-               <p>Beta 1.0.9</p>
+               <p>Beta 1.1.0</p>
             </div>
          </div>
       </div>
