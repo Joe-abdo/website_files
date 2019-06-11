@@ -97,7 +97,7 @@ $conn->close();
             </div>
             <div class="card">
                <h3>Website version</h3>
-               <p>Beta 1.1.1</p>
+               <p>Beta 1.1.2</p>
             </div>
          </div>
       </div>

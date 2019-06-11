@@ -92,7 +92,7 @@ if (!empty($_FILES['image']['tmp_name']) && file_exists($_FILES['image']['tmp_na
                 $txt   = "";
             } else {
                 $image = mysqli_real_escape_string($conn,file_get_contents($_FILES['image']['tmp_name']));
-                $txt   = trim(mysqli_real_escape_string($conn,$_POST['file']));
+                $txt   = mysqli_real_escape_string($conn,trim($_POST['file']," \t\n\r\0\x0B\s+"));
             }
         } else {
             echo "<p>File is not an image.</p>";
@@ -102,7 +102,7 @@ if (!empty($_FILES['image']['tmp_name']) && file_exists($_FILES['image']['tmp_na
     }
 } else {
     $image = "";
-    $txt   = trim(mysqli_real_escape_string($conn,$_POST['file']));
+$txt   = mysqli_real_escape_string($conn,trim($_POST['file']," \t\n\r\0\x0B\s+"));
 }
 
 if (empty($txt) && empty($image)) {
