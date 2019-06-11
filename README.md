@@ -4,8 +4,8 @@
 <li>Database client version: libmysql - mysqlnd 5.0.12-dev - 20150407 - $Id: 7cc7cc96e675f6d72e5cf0f267f48e167c2abb23 $</li>
 <li>PHP extension: mysqli curl mbstring</li>
 <li>PHP version: 7.3.2</li></ul>
-<pre>SQL:
-CREATE TABLE `table1` (
+<p>SQL:</p>
+<pre>CREATE TABLE `table1` (
  `id` int(11) NOT NULL AUTO_INCREMENT,
  `file` text COLLATE utf8_unicode_ci DEFAULT NULL,
  `image` longblob DEFAULT NULL,
