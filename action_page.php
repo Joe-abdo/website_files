@@ -66,9 +66,7 @@
 include_once('connect.php');
 $date = "CURDATE()";
 $time = "CURTIME()";
-
 mysqli_query($conn, "SET SESSION time_zone = '+3:00'");
-
 $image_name = mysqli_real_escape_string($conn,strtolower($_FILES['image']['name']));
 if (!empty($_FILES['image']['tmp_name']) && file_exists($_FILES['image']['tmp_name'])) {
     
@@ -76,11 +74,12 @@ if (!empty($_FILES['image']['tmp_name']) && file_exists($_FILES['image']['tmp_na
         'gif',
         'png',
         'jpg',
-        'jpeg'
+        'jpeg',
+		'webp'
     );
     $ext     = pathinfo($image_name, PATHINFO_EXTENSION);
     if (!in_array($ext, $allowed)) {
-        echo '<p>Sorry, only JPG, JPEG, PNG & GIF files are allowed.</p>';
+        echo '<p>Sorry, only JPG, JPEG, PNG, GIF & WEBP files are allowed.</p>';
         $image = "";
         $txt   = "";
     } else {
@@ -102,9 +101,8 @@ if (!empty($_FILES['image']['tmp_name']) && file_exists($_FILES['image']['tmp_na
     }
 } else {
     $image = "";
-$txt   = mysqli_real_escape_string($conn,trim($_POST['file']," \t\n\r\0\x0B\s+"));
+	$txt   = mysqli_real_escape_string($conn,trim($_POST['file']," \t\n\r\0\x0B\s+"));
 }
-
 if (empty($txt) && empty($image)) {
     echo "<p>Thanks, for nothing...</p>";
 } else {

@@ -60,47 +60,36 @@
       </script>
       <div class="row">
          <div class="leftcolumn">
-            <div class="card">
-               <h2>TITLE HEADING</h2>
-               <h5>Title description, Dec 7, 2017</h5>
-               <div class="fakeimg" style="height:200px;">Image</div>
-               <p>Some text..</p>
-               <p>Sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.</p>
-            </div>
-            <div class="card">
-               <h2>TITLE HEADING</h2>
-               <h5>Title description, Sep 2, 2017</h5>
-               <div class="fakeimg" style="height:200px;">Image</div>
-               <p>Some text..</p>
-               <p>Sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.</p>
-            </div>
+            <div class='card'>
+				<p style='color:grey;font-size:13px'>id: ̸̸̶̵̸̶̴̷̸̷̧̏̆́͋͘͠█̷̴̶̸̵̸̶̶̠̃̑̕͠- </p>
+				<p>Congratulations! You have found the super secret post,hidden from everyone else... Just kidding,you just entered a wrong link.Anyhow, nice to see you.</p>
+				<p style='color:grey;font-size:13px;text-align:right;'>31 Feb -0001 at 12:00 am</p>
+			 </div>
          </div>
          <div class="rightcolumn">
+            
             <div class="card">
-               <h2>About Me</h2>
-               <div class="fakeimg" style="height:100px;">Image</div>
-               <p>Some text about me in culpa qui officia deserunt mollit anim..</p>
+               <h3>Future updates:</h3>
+               <ul>
+  <li>Like system</li>
+  <li>Better image posting</li>
+  <li>Security stuff</li>
+  <li>B̢̫̤͈̹̤̘͖̍ͫ̃ͣu̬̻͈͍̙g̰̦͕ ̱̙̦͔̪ͭf̡̘͕͔̠͉̥ͣ͐ï̤̿̇͂ͤx̴̮̯̘͙̠̌e̹̭͙͍̣̼̎ͤͭs͙͈͍͋͋̈̕</li>
+</ul> 
+            </div>
+			<div class="card">
+               <h2>Sponsored by:</h2>
+               <div class="fakeimg" style="height:100px;">Nobody</div>
+               <p>Because no one cares about this site...</p>
             </div>
             <div class="card">
-               <h3>Popular Post</h3>
-               <div class="fakeimg">
-                  <p>Image</p>
-               </div>
-               <div class="fakeimg">
-                  <p>Image</p>
-               </div>
-               <div class="fakeimg">
-                  <p>Image</p>
-               </div>
-            </div>
-            <div class="card">
-               <h3>Follow Me</h3>
-               <p>Some text..</p>
+               <h3>Website version</h3>
+               <p>Beta 1.1.2</p>
             </div>
          </div>
       </div>
-      <div class="footer">
-         <h2>Footer</h2>
+     <div class="footer">
+         <h2>&copy;Copyright Joe-abdo technologies.co.ltd <?php echo date("Y"); ?></h2>
       </div>
 <!-- body -->
 </html>

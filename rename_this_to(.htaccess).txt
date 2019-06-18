@@ -9,6 +9,8 @@ RewriteEngine On
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteRule ^([^\.]+)$ $1.php [NC,L]
 
+Header append X-FRAME-OPTIONS DENY
+
 <files connect.php>
 order allow,deny
 deny from all
