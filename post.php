@@ -18,8 +18,7 @@
         <meta name="twitter:domain" content="joeabdo.tk"/>
         <meta name="twitter:title" property="og:title" content="Joe-abdo" />
         <meta name="twitter:description" property="og:description" content="The world's best site, our website." />
-	  
-      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+      <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.9.0/css/all.css">
 	  <link rel="stylesheet" href="/J1.css">
 	  <link rel="stylesheet" href="/J2.css">
    </head>
@@ -81,5 +80,5 @@
          </div>
       </div>
       </div>  
-<!-- body -->
+<!-- body v_B1.1.2-->
 </html>

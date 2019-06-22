@@ -18,7 +18,7 @@
       <meta name="twitter:domain" content="joeabdo.tk"/>
       <meta name="twitter:title" property="og:title" content="Joe-abdo" />
       <meta name="twitter:description" property="og:description" content="The world's best site, our website." />
-      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+      <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.9.0/css/all.css">
       <link rel="stylesheet" href="/J1.css">
 	  <style>
 a.download:link, a.download:visited {
@@ -49,16 +49,6 @@ a.download:hover, a.download:active {
          <a href="/post">Post</a>
          <a href="#contact">Contact</a>
          <a href="#top" class="active">About</a>
-       <!--  <div class="dropdown" style="float:right;">
-            <button class="dropbtn">Account 
-            <i class="fa fa-caret-down"></i>
-            </button>
-            <div class="dropdown-content" style="min-width: 120px;">
-               <a href="#">Profile</a>
-               <a href="#">Log out</a>
-               <a href="#">Delete</a>
-            </div>
-         </div> -->
          <a href="javascript:void(0);" style="font-size:15px;" class="icon"
             onclick="myFunction()">&#9776;</a>
       </div>
@@ -100,5 +90,5 @@ a.download:hover, a.download:active {
       <div class="footer">
          <h2>&copy;Copyright Joe-abdo technologies.co.ltd <?php echo date("Y"); ?></h2>
       </div>
-      <!-- body -->
+      <!-- body v_B1.1.2-->
 </html>

@@ -7,7 +7,6 @@
         <link rel="icon" href="/favicon.ico" type="image/x-icon">
         <link rel="shortcut icon" href="/favicon.ico">
         <link id="favicon" rel="apple-touch-icon image_src" href="/favicon.png">
-
         <meta name="description" content="The world's best site, our website."/>
         <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, minimum-scale=1.0">
         <meta property="og:type" content= "website" />
@@ -19,8 +18,7 @@
         <meta name="twitter:domain" content="joeabdo.tk"/>
         <meta name="twitter:title" property="og:title" content="Joe-abdo" />
         <meta name="twitter:description" property="og:description" content="The world's best site, our website." />
-	  
-      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+      <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.9.0/css/all.css">
 	  <link rel="stylesheet" href="/J1.css">
    </head>
    <body>
@@ -45,8 +43,7 @@
                <a href="#">Delete</a>
             </div>
          </div>  -->
-         <a href="javascript:void(0);" style="font-size:15px;" class="icon"
-            onclick="myFunction()">&#9776;</a>
+         <a href="javascript:void(0);" style="font-size:15px;" class="icon" onclick="myFunction()">&#9776;</a>
       </div>
       <script>
          function myFunction() {
@@ -91,5 +88,5 @@
      <div class="footer">
          <h2>&copy;Copyright Joe-abdo technologies.co.ltd <?php echo date("Y"); ?></h2>
       </div>
-<!-- body -->
+<!-- body v_B1.1.2-->
 </html>
