@@ -18,6 +18,13 @@ include_once('bj.php')
          <a href="#contact"><i class="far fa-address-card"></i><span class="hide"> Contact</span></a>
          <a href="/about"><i class="fas fa-info-circle"></i><span class="hide"> About</span></a>
       </div>
+	  <script>
+		 var timezone_offset_minutes = new Date().getTimezoneOffset();
+timezone_offset_minutes = timezone_offset_minutes == 0 ? 0 : -timezone_offset_minutes;
+
+console.log(timezone_offset_minutes);
+document.cookie = "tyme="+timezone_offset_minutes;
+		 </script>
       <div class="row">
          <div class="leftcolumn">
 

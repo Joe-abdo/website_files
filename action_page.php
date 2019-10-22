@@ -23,11 +23,24 @@ include_once('bj.php')
       </div>
       <div class="column middle">
 	     <div class="text">
+		 <script>
+		 var timezone_offset_minutes = new Date().getTimezoneOffset();
+timezone_offset_minutes = timezone_offset_minutes == 0 ? 0 : -timezone_offset_minutes;
+
+console.log(timezone_offset_minutes);
+document.cookie = "tyme="+timezone_offset_minutes;
+		 </script>
              <?php
 include_once ('connect.php');
+$timezone_offset_minutes = $_COOKIE['tyme'];
+if ($timezone_offset_minutes/60 >= 0){
+	$sign = '+' ;
+}else{
+	$sign = '-' ;
+}
+mysqli_query($conn, "SET SESSION time_zone = '".$sign."".$timezone_offset_minutes/60 .":00'");
 $date = "CURDATE()";
 $time = "CURTIME()";
-mysqli_query($conn, "SET SESSION time_zone = '+3:00'");
 $image_name = mysqli_real_escape_string($conn, strtolower($_FILES['image']['name']));
 if (!empty($_FILES['image']['tmp_name']) && file_exists($_FILES['image']['tmp_name'])) {
     $allowed = array('gif', 'png', 'jpg', 'jpeg');
