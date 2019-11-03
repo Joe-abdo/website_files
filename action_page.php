@@ -23,17 +23,10 @@ include_once('bj.php')
       </div>
       <div class="column middle">
 	     <div class="text">
-		 <script>
-		 var timezone_offset_minutes = new Date().getTimezoneOffset();
-timezone_offset_minutes = timezone_offset_minutes == 0 ? 0 : -timezone_offset_minutes;
-
-console.log(timezone_offset_minutes);
-document.cookie = "tyme="+timezone_offset_minutes;
-		 </script>
              <?php
 include_once ('connect.php');
 $timezone_offset_minutes = $_COOKIE['tyme'];
-if ($timezone_offset_minutes/60 >= 0){
+if ($timezone_offset_minutes >= 0){
 	$sign = '+' ;
 }else{
 	$sign = '-' ;
@@ -58,22 +51,20 @@ if (!empty($_FILES['image']['tmp_name']) && file_exists($_FILES['image']['tmp_na
                 $txt = "";
             } else {
                 if ($ext != 'gif') {
+					$newFilename = $_FILES["image"]["name"] ."_". random_int(-time(), 0) . "_". uniqid() .".webp";
                     if ($ext == 'jpg' || $ext == 'jpeg') {
                         $img = imagecreatefromjpeg($_FILES['image']['tmp_name']);
+						imagewebp($img, "./pictures/" . $newFilename, 70);
                     } elseif ($ext == 'png') {
                         $img = imagecreatefrompng($_FILES['image']['tmp_name']);
+						imagewebp($img, "./pictures/" . $newFilename, 70);
                     }
-                    imagepalettetotruecolor($img);
-                    imagealphablending($img, true);
-                    imagesavealpha($img, true);
-                    ob_start();
-                    imagewebp($img, NULL, 70);
-                    $image = mysqli_real_escape_string($conn, ob_get_contents());
-                    ob_end_clean();
                 } elseif ($ext == 'gif') {
-                    $image = mysqli_real_escape_string($conn, file_get_contents($_FILES['image']['tmp_name']));
+					$newFilename= $_FILES["image"]["name"] ."_". random_int(-time(), 0) . "_". uniqid() .".gif";
+                    move_uploaded_file($_FILES["image"]["tmp_name"],"./pictures/" . $newFilename);
                 }
                 $txt = mysqli_real_escape_string($conn, trim($_POST['file'], " \t\n\r\0\x0B\s+"));
+				$image="pictures/" . $newFilename;  
             }
         } else {
             echo "<p>File is not an image.</p>";

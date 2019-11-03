@@ -38,13 +38,13 @@ a.download:hover, a.download:active {
       <div class="row">
          <div class="leftcolumn">
             <div class='card'>
-               <img src="https://i.imgur.com/utOGiXI.jpg" alt="Image" style="float:left;max-width: 100%;max-height:300px;">
+               <img src="https://i.imgur.com/utOGiXI.jpg" alt="Image" style="float:left;max-width: 100%;max-height:300px;" loading="lazy">
                <h1 style="font-size:30px">Joe-abdo <sub style="font-size:20px; color:gray">(2002-???)</sub></h1>
                <p>| Painter | Comedian | Politician | Web developer |</p>
                <p  style="font-size:15px">Joe-abdo was born on July 11, 2002. He was a comedian, a painter, a politician and a web developer, known for joking and painting, mostly in class, and last but not least creating websites. He probably is still alive.<br /><br /><b style="color:gray;">Born:</b> July 11, 2002<br /><br /><b style="color:gray;">Died:</b>???</p>
             </div>
             <div class='card'>
-               <h1 style="font-size:30px"><img src="/favicon.png" alt="Image" style="float:left;max-width: 100%;max-height:200px;">Joe-abdo<sub style="font-size:20px; color:gray">(2018-&infin;)</sub></h1>
+               <h1 style="font-size:30px"><img src="/favicon.png" alt="Image" style="float:left;max-width: 100%;max-height:200px;" loading="lazy">Joe-abdo<sub style="font-size:20px; color:gray">(2018-&infin;)</sub></h1>
                <p>| Website | https://joeabdo.tk |</p>
                <p  style="font-size:15px">Joe-abdo(the website) is a social media platform owned, run, managed, administrated...etc., all by Joe-abdo(the person), and is constantly being worked on, in order to improve and provide a richer user experience.<br /><br /><b style="color:gray;">Started:</b>November 6, 2018</p>
             </div>
@@ -56,7 +56,7 @@ a.download:hover, a.download:active {
             </div>
             <div class="card">
                <h3>Website version</h3>
-               <p><i class="fas fa-hand-middle-finger"></i> 1.5.2-69/420</p>
+               <p><i class="fas fa-hand-middle-finger"></i> 1.6.4-69/420</p>
             </div>
          </div>
       </div>

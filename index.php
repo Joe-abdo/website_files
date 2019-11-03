@@ -18,16 +18,8 @@ include_once('bj.php')
          <a href="#contact"><i class="far fa-address-card"></i><span class="hide"> Contact</span></a>
          <a href="/about"><i class="fas fa-info-circle"></i><span class="hide"> About</span></a>
       </div>
-	  <script>
-		 var timezone_offset_minutes = new Date().getTimezoneOffset();
-timezone_offset_minutes = timezone_offset_minutes == 0 ? 0 : -timezone_offset_minutes;
-
-console.log(timezone_offset_minutes);
-document.cookie = "tyme="+timezone_offset_minutes;
-		 </script>
       <div class="row">
          <div class="leftcolumn">
-
 <?php
 include_once('connect.php');
 $sql    = "SELECT id, file, image, image_name, date ,time FROM table1 ORDER BY id DESC";
@@ -39,7 +31,7 @@ if ($result->num_rows > 0) {
         echo "<div class='card'>
 				<p style='color:grey;font-size:13px'>id:" . $row["id"] . "- </p>
 				<p>" . nl2br(preg_replace($url, '<a href="http$2://$4" target="_blank" title="$0" class="link">$0</a>', htmlspecialchars($row["file"]))) . "</p>
-				" . ((isset($row['image']) && !empty($row['image'])) ? '<img src="data:image/' . $ext . ';base64,' . base64_encode($row['image']) . '" style="max-width: 100%;max-height:500px;" alt="Image_missing"/>' : '') . "
+				" . ((isset($row['image']) && !empty($row['image'])) ? '<img src="' .$row['image'] . '" style="max-width: 100%;max-height:500px;" loading="lazy" alt="Image_missing"/>' : '') . "
 				<p style='color:grey;font-size:13px;text-align:right;'>" . date('j M Y', strtotime($row["date"])) . " at " . date('g:i a', strtotime($row["time"])) . "</p>
 			 </div>";
     }
@@ -54,6 +46,9 @@ $conn->close();
             <div class="card">
                <h3>Future updates:</h3>
                <ul>
+			   <li>Better loading</li>
+			   <li>load on scroll</li>
+			   <li>gif compression</li>
   <li>Like system</li>
   <li>Better image posting</li>
   <li>Security stuff</li>
@@ -67,7 +62,7 @@ $conn->close();
             </div>
             <div class="card">
                <h3>Website version</h3>
-               <p><i class="fas fa-hand-middle-finger"></i> 1.5.2-69/420</p>
+               <p><i class="fas fa-hand-middle-finger"></i> 1.6.4-69/420</p>
             </div>
          </div>
       </div>
