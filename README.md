@@ -8,8 +8,7 @@
 <pre>CREATE TABLE `table1` (
  `id` int(11) NOT NULL AUTO_INCREMENT,
  `file` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
- `image` longblob DEFAULT NULL,
- `image_name` varchar(64) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+ `image` text DEFAULT NULL,
  `date` date NOT NULL,
  `time` time NOT NULL,
  PRIMARY KEY (`id`)
