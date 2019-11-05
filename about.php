@@ -56,12 +56,12 @@ a.download:hover, a.download:active {
             </div>
             <div class="card">
                <h3>Website version</h3>
-               <p><i class="fas fa-hand-middle-finger"></i> 1.6.4-69/420</p>
+               <p>௹1.6.5</p>
             </div>
          </div>
       </div>
       <div class="footer">
          <h2>&copy;Copyright Joe-abdo technologies.co.ltd <?php echo date("Y"); ?></h2>
       </div>
-      <!-- body v_B1.1.2-->
+      <!-- body -->
 </html>

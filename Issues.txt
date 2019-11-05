@@ -1,0 +1,14 @@
+____currently known issues ____
+--------------------------------------------------
+-no lazy rendering for images _should use vanilla
+-all data of data base loaded at once instead of loading only when page is scrolled
+-gifs are not compressed in order to retain animation
+---------------------------------------------------
++use less cookies
++no likes/dislikes
++no comments
++no accounts
++no dark mode --css/js
++need to merge action page and post page
++merge j1.css/j2.css
+---------------------------------------------------

@@ -51,20 +51,22 @@ if (!empty($_FILES['image']['tmp_name']) && file_exists($_FILES['image']['tmp_na
                 $txt = "";
             } else {
                 if ($ext != 'gif') {
-					$newFilename = $_FILES["image"]["name"] ."_". random_int(-time(), 0) . "_". uniqid() .".webp";
+					$newFilename = mysqli_real_escape_string($conn, $_FILES["image"]["name"] ."_". random_int(-time(), 0) . "_". uniqid() .".webp");
                     if ($ext == 'jpg' || $ext == 'jpeg') {
                         $img = imagecreatefromjpeg($_FILES['image']['tmp_name']);
 						imagewebp($img, "./pictures/" . $newFilename, 70);
+						imagedestroy($img);
                     } elseif ($ext == 'png') {
                         $img = imagecreatefrompng($_FILES['image']['tmp_name']);
 						imagewebp($img, "./pictures/" . $newFilename, 70);
+						imagedestroy($img);
                     }
                 } elseif ($ext == 'gif') {
-					$newFilename= $_FILES["image"]["name"] ."_". random_int(-time(), 0) . "_". uniqid() .".gif";
+					$newFilename = mysqli_real_escape_string($conn, $_FILES["image"]["name"] ."_". random_int(-time(), 0) . "_". uniqid() .".gif");
                     move_uploaded_file($_FILES["image"]["tmp_name"],"./pictures/" . $newFilename);
                 }
                 $txt = mysqli_real_escape_string($conn, trim($_POST['file'], " \t\n\r\0\x0B\s+"));
-				$image="pictures/" . $newFilename;  
+				$image="pictures/" . $newFilename;
             }
         } else {
             echo "<p>File is not an image.</p>";
@@ -79,8 +81,8 @@ if (!empty($_FILES['image']['tmp_name']) && file_exists($_FILES['image']['tmp_na
 if (empty($txt) && empty($image)) {
     echo "<p>Thanks, for nothing...</p>";
 } else {
-    $sql = "INSERT INTO table1 (file,image,image_name,date,time)
-              VALUES ('$txt','$image','$image_name',$date,$time)";
+    $sql = "INSERT INTO table1 (file,image,date,time)
+              VALUES ('$txt','$image',$date,$time)";
     if (!mysqli_query($conn, $sql)) {
         die('Error: ' . mysqli_error($conn));
     }
@@ -90,5 +92,5 @@ mysqli_close($conn);
 ?>
 			</div>
       </div>
-  <!-- body v_B1.1.2-->
+  <!-- body -->
 </html>

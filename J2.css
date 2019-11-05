@@ -1,14 +1,14 @@
-﻿input[type=file], select {
+﻿input[type=file] + label , select{
+	 color: rgb(120,120,120);
 	 cursor:pointer;
-     text-align: center;
+     text-align: left;
      width: 100%;
-     background-color: rgb(255, 255, 255);
-     background-color: rgba(255, 255, 255, 0.8);
-     padding: 12px 20px;
+     background-color: rgb(250, 250, 250);
+     padding: 10px 17px;
      margin: 8px 0;
      display: inline-block;
      border: 1px solid #ccc;
-     border-radius: 4px;
+     border-radius: 2px;
      box-sizing: border-box;
 }
  input[type=submit] {
@@ -23,7 +23,6 @@
      border-radius: 4px;
      cursor: pointer;
 }
-
 input[type=reset] {
      width: 48%;
      color: rgb(255,255,255);
@@ -36,17 +35,14 @@ input[type=reset] {
      border-radius: 4px;
      cursor: pointer;
 }
-
 input[type=reset]:focus,input[type=submit]:focus {
     border-color: #6524bf;
     outline: 0;
 }
-
  input[type=submit]:hover, input[type=submit]:disabled, input[type=reset]:hover{
      background-color: rgb(80, 30, 155);
      background-color: rgba(80, 30, 155, 0.8);
 }
-
 textarea{
 	 cursor:text;
      text-align: center;
@@ -54,31 +50,34 @@ textarea{
      max-width: 100%;
      min-width: 100%;
      min-height:80px;
-     background-color: rgb(255, 255, 255);
-     background-color: rgba(255, 255, 255, 0.8);
+     background-color: rgb(250, 250, 250);
      padding: 12px 20px;
      margin: 8px 0;
      display: inline-block;
      border: 1px solid #ccc;
-     border-radius: 4px;
+     border-radius: 2px;
      box-sizing: border-box;
-     
 }
-
-input[type="file"]:focus,input[type="file"]:hover, textarea:focus,textarea:hover {
+input[type="file"]:focus + label,input[type="file"]:hover + label, textarea:focus,textarea:hover {
   border-color: #6524bf;
   outline: 0;
   -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102, 175, 233, 0.6);
   box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(110, 40, 205, 0.6);
 }
-
+input[type="file"]{
+	width: 0.1px;
+	height: 0.1px;
+	opacity: 0;
+	overflow: hidden;
+	position: absolute;
+	z-index: -1;
+}
  div.container {
      text-align: center;
      width: 380px;
      display: inline-block;
-     border-radius: 5px;
-     background-color: rgb(225,225,225);
-     background-color: rgba(225,225,225,0.8);
+     border-radius: 0;
+     background-color: rgb(255,255,255);
      padding: 20px;
      margin: 10px;
 }

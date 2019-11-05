@@ -22,12 +22,11 @@ include_once('bj.php')
          <div class="leftcolumn">
 <?php
 include_once('connect.php');
-$sql    = "SELECT id, file, image, image_name, date ,time FROM table1 ORDER BY id DESC";
+$sql    = "SELECT id, file, image, date ,time FROM table1 ORDER BY id DESC";
 $result = $conn->query($sql);
 $url    = '@(http(s)?)?(://)?(([a-zA-Z])([-\w]+\.)+([^\s\.]+[^\s]*)+[^,.\s])@';
 if ($result->num_rows > 0) {
     while ($row = $result->fetch_assoc()) {
-		$ext     = pathinfo($row['image_name'], PATHINFO_EXTENSION);
         echo "<div class='card'>
 				<p style='color:grey;font-size:13px'>id:" . $row["id"] . "- </p>
 				<p>" . nl2br(preg_replace($url, '<a href="http$2://$4" target="_blank" title="$0" class="link">$0</a>', htmlspecialchars($row["file"]))) . "</p>
@@ -62,12 +61,12 @@ $conn->close();
             </div>
             <div class="card">
                <h3>Website version</h3>
-               <p><i class="fas fa-hand-middle-finger"></i> 1.6.4-69/420</p>
+               <p>௹1.6.5</p>
             </div>
          </div>
       </div>
       <div class="footer">
          <h2>&copy;Copyright Joe-abdo technologies.co.ltd <?php echo date("Y"); ?></h2>
       </div>
-  <!-- body v_B1.1.2-->
+  <!-- body -->
 </html>
