@@ -61,7 +61,7 @@ $conn->close();
             </div>
             <div class="card">
                <h3>Website version</h3>
-               <p>௹1.6.5</p>
+               <p><?php echo $ver?></p>
             </div>
          </div>
       </div>
