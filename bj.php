@@ -1,4 +1,4 @@
-<title>Joe-abdo|<?php echo $page_name;$tld="localhost";$ver="Ω 1.6.8"?></title>
+<title>Joe-abdo|<?php echo $page_name;$tld="localhost";$ver="Ω 1.6.9"?></title>
 <meta charset="utf-8" />
 <meta name="google" content="notranslate">
 <link rel="icon" href="/favicon.ico" type="image/x-icon">
@@ -17,4 +17,3 @@
 <meta name="twitter:description" property="og:description" content="The world's best site, our website." />
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.9.0/css/all.css">
 <link rel="stylesheet" href="/J1.css">
-<link rel="stylesheet" href="/J2.css">
