@@ -5,17 +5,6 @@
 $page_name = 'home';
 include_once('bj.php')
 ?>
-<style>
-a.one { 
-  font-size: 15px;
-  color: rgb(145, 65, 255);
-  border:2px solid rgb(145, 65, 255);
-  border-radius: 4px;
-  padding: 1px;
-  font-weight: bold;
-  cursor: pointer;
-}
-</style>
 </head>
    <body>
       <a id="home"></a>
@@ -39,26 +28,10 @@ $url    = '@(http(s)?)?(://)?(([a-zA-Z])([-\w]+\.)+([^\s\.]+[^\s]*)+[^,.\s])@';
 if ($result->num_rows > 0) {
     while ($row = $result->fetch_assoc()) {
         echo "<div class='card'>
-		<script>
-function money".$row["id"]."() {
-  var dots".$row["id"]." = document.getElementById('dots".$row["id"]."');
-  var moreText".$row["id"]." = document.getElementById('more".$row["id"]."');
-  var btnText".$row["id"]." = document.getElementById('myBtn".$row["id"]."');
-
-  if (dots".$row["id"].".style.display === 'none') {
-    dots".$row["id"].".style.display = 'inline';
-    btnText".$row["id"].".innerHTML = 'Read more <br />'; 
-    moreText".$row["id"].".style.display = 'none';
-  } else {
-    dots".$row["id"].".style.display = 'none';
-    btnText".$row["id"].".innerHTML = 'Read less <br />'; 
-    moreText".$row["id"].".style.display = 'inline';
-  }
-}
-</script>
+		
 				<p style='color:grey;font-size:13px'>id:" . $row["id"] . "-</p>
-				" . ((strlen($row["file"])) <= 200 ? '<p>' . nl2br(preg_replace($url, '<a href="http$2://$4" target="_blank" title="$0" class="link">$0</a>', htmlspecialchars($row["file"]))) . '<p>' : '<p>'.nl2br( substr(preg_replace($url, '<a href="http$2://$4" target="_blank" title="$0" class="link">$0</a>', htmlspecialchars($row["file"])), 0, 200) )."<span id='dots".$row["id"]."'>...</span><span style='display: none' id='more".$row["id"]."'> ".nl2br(substr( preg_replace($url, '<a href="http$2://$4" target="_blank" title="$0" class="link">$0</a>', htmlspecialchars($row["file"])), 200) ).'</span></p><a class="one" onclick="money'.$row["id"].'()"  id="myBtn'.$row["id"].'">Read more<br /></a> <br />') . "
-				" . ((isset($row['image']) && !empty($row['image'])) ? '<img src="' .$row['image'] . '" style="max-width:100%;max-height:500px;" loading="lazy" alt="Image_missing"/>' : '') . "
+				" . ((strlen($row["file"])) <= 200 ? '<p>' . nl2br(preg_replace($url, '<a href="http$2://$4" target="_blank" title="$0" class="link">$0</a>', htmlspecialchars($row["file"]))) . '<p>' : '<input type="checkbox" class="read-more-state" id="'.$row["id"].'" /><p class="read-more-wrap">'.nl2br( substr(preg_replace($url, '<a href="http$2://$4" target="_blank" title="$0" class="link">$0</a>', htmlspecialchars($row["file"])), 0, 200) )."<span class='dots'>...</span><span class='read-more-target'> ".nl2br(substr( preg_replace($url, '<a href="http$2://$4" target="_blank" title="$0" class="link">$0</a>', htmlspecialchars($row["file"])), 200) ).'</span></p><label for="'.$row["id"].'" class="read-more-trigger"></label>') . "
+				" . ((isset($row['image']) && !empty($row['image'])) ? '<br /><br /><img src="' .$row['image'] . '" style="max-width:100%;max-height:500px;" loading="lazy" alt="Image_missing"/>' : '') . "
 				<p style='color:grey;font-size:13px;text-align:right;'>" . date('j M Y', strtotime($row["date"])) . " at " . date('g:i a', strtotime($row["time"])) . "</p>
 			 </div>";
     }

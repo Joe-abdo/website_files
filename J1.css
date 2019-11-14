@@ -199,6 +199,72 @@ a.link:hover, a.link:active {
          padding: 0;
     }
 }
+.read-more-state {
+  display: none;
+}
+
+.read-more-target br {
+    content: ' '
+}
+
+.read-more-target br:after {
+    content: ' '
+}
+
+.read-more-state:checked ~ .read-more-wrap .read-more-target br{
+  opacity: 1;
+  font-size: inherit;
+  max-height: 999em;
+  display: block;
+}
+
+.read-more-state:checked ~ .read-more-target:before br{
+	display:block;
+    white-space: pre;
+}
+
+.read-more-target {
+  opacity: 0;
+  max-height: 0;
+  font-size: 0;
+  transition: .25s ease;
+}
+
+.read-more-state:checked ~ .read-more-wrap .read-more-target {
+  opacity: 1;
+  font-size: inherit;
+  max-height: 999em;
+}
+
+.read-more-state ~ .read-more-trigger:before {
+  content: 'Read more';
+}
+
+.read-more-state:checked ~ .read-more-trigger:before {
+  content: 'Read less';
+}
+
+.read-more-trigger {
+  font-size: 13px;
+  color: rgb(145, 65, 255);
+  border:1px solid rgb(145, 65, 255);
+  border-radius: 2px;
+  padding: 1px;
+  cursor: pointer;
+}
+.dots {
+  opacity: 1;
+  font-size: inherit;
+  max-height: 999em;
+  font-weight:bold;
+}
+
+.read-more-state:checked ~ .read-more-wrap .dots {
+  opacity: 0;
+  max-height: 0;
+  font-size: 0;
+  transition: .25s ease;
+}
 /* title fix */
 @media screen and (max-width: 400px){
  .header p {

@@ -1,4 +1,4 @@
-<title>Joe-abdo|<?php echo $page_name;$tld="localhost";$ver="Ω 1.6.7"?></title>
+<title>Joe-abdo|<?php echo $page_name;$tld="localhost";$ver="Ω 1.6.8"?></title>
 <meta charset="utf-8" />
 <meta name="google" content="notranslate">
 <link rel="icon" href="/favicon.ico" type="image/x-icon">
