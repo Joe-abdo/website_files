@@ -29,11 +29,11 @@ include_once('bj.php')
             <div class="card">
                 <h3>Future updates:</h3>
                 <ul>
-                    <li>Better loading</li>
-                    <li>load on scroll</li>
+                    <li>Better image posting</li>
+                    <li>Better image loading</li>
+                    <li>Accounts</li>
                     <li>gif compression</li>
                     <li>Like system</li>
-                    <li>Better image posting</li>
                     <li>Security stuff</li>
                     <li>B̢̫̤͈̹̤̘͖̍ͫ̃ͣu̬̻͈͍̙g̰̦͕ ̱̙̦͔̪ͭf̡̘͕͔̠͉̥ͣ͐ï̤̿̇͂ͤx̴̮̯̘͙̠̌e̹̭͙͍̣̼̎ͤͭs͙͈͍͋͋̈̕</li>
                 </ul>
