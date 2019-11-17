@@ -192,6 +192,7 @@ a.link:hover, a.link:active {
 -webkit-hyphens: auto;
    -moz-hyphens: auto;
         hyphens: auto;
+		color: #5f5f5f;
 }
  @media screen and (max-width: 800px) {
      .leftcolumn, .rightcolumn {
@@ -260,6 +261,7 @@ a.link:hover, a.link:active {
 }
 
 .read-more-state:checked ~ .read-more-wrap .dots {
+  display:none;
   opacity: 0;
   max-height: 0;
   font-size: 0;
@@ -349,6 +351,40 @@ input[type="file"]{
          width: 100%;
     }
  }
+ .loading{
+font-size: 20px;
+font-weight:bold;
+  color: rgb(145, 65, 255);
+  border:3px solid rgb(145, 65, 255);
+  border-radius: 6px;
+  padding: 3px;
+  position: relative;
+  float: left;
+  left: 50%;
+   margin-top: 20px;
+}
+.loader {
+  border: 10px solid #f9f9f9;
+  border-radius: 50%;
+  border-top: 10px solid rgb(145, 65, 255);
+  width: 60px;
+  height: 60px;
+  -webkit-animation: spin 2s linear infinite; /* Safari */
+  animation: spin 2s linear infinite;
+  position: relative;
+  float: left;
+  left: 50%;
+   margin-top: 20px;
+}
+/* Safari */
+@-webkit-keyframes spin {
+  0% { -webkit-transform: rotate(0deg); }
+  100% { -webkit-transform: rotate(360deg); }
+}
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
 /* title fix */
 @media screen and (max-width: 400px){
  .header p {
