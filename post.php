@@ -13,7 +13,7 @@ include_once('bj.php')
         <p>The world's best site, <span style="text-decoration:line-through;">my</span> our website.</p>
     </div>
     <div class="topnav" id="myTopnav">
-        <a href="https://<?php echo $tld?>/"><i class="fas fa-home"></i><span class="hide"> Home</span></a>
+        <a href="<?php echo $tld?>/"><i class="fas fa-home"></i><span class="hide"> Home</span></a>
         <a href="#top" class="active"><i class="fas fa-comment-alt"></i><span class="hide"> Post</span></a>
         <a href="#contact"><i class="far fa-address-card"></i><span class="hide"> Contact</span></a>
         <a href="/about"><i class="fas fa-info-circle"></i><span class="hide"> About</span></a>
@@ -22,7 +22,7 @@ include_once('bj.php')
         <div style="text-align:center;">
             <div class="container">
                 <form action="/action_page" method="post" enctype="multipart/form-data">
-                    <textarea name="file" placeholder="What's up, nigga?" style="text-align:left" maxlength="400"></textarea>
+                    <textarea name="file" placeholder="What's up, nigga?" style="text-align:left" maxlength="1200"></textarea>
                     <input type="file" accept='image/*' name="image" id="image-source" onchange="previewImage();" />
 					<label for="image-source">+Add image <i class="far fa-file-image"></i> <b>?</b></label>
                     <img id="image-preview" src="." alt="" style="width:50%;max-width:200px;max-height:200px;display:none;margin-left:auto;margin-right:auto;" />

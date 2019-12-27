@@ -17,18 +17,18 @@ if ($result->num_rows > 0) {
         if ($a >= 11) {
             $array = explode("\n", $row["file"]);
             $skip  = strlen(implode("\n", array_slice($array, 0, 11)));
-            if ($skip >= 200) {
-                echo '<input type="checkbox" class="read-more-state" id="' . $row["id"] . '" /><p class="read-more-wrap">' . nl2br(substr(preg_replace($url, '<a href="http$2://$4" target="_blank" title="$0" class="link">$0</a>', htmlspecialchars($row["file"])), 0, 200)) . "<span class='dots'>...</span><span class='read-more-target'> " . nl2br(substr(preg_replace($url, '<a href="http$2://$4" target="_blank" title="$0" class="link">$0</a>', htmlspecialchars($row["file"])), 200)) . '</span></p><label for="' . $row["id"] . '" class="read-more-trigger"></label>';
+            if ($skip >= 400) {
+                echo '<input type="checkbox" class="read-more-state" id="' . $row["id"] . '" /><p class="read-more-wrap">' . nl2br(substr(preg_replace($url, '<a href="http$2://$4" target="_blank" title="$0" class="link">$0</a>', htmlspecialchars($row["file"])), 0, 400)) . "<span class='dots'>...</span><span class='read-more-target'> " . nl2br(substr(preg_replace($url, '<a href="http$2://$4" target="_blank" title="$0" class="link">$0</a>', htmlspecialchars($row["file"])), 400)) . '</span></p><label for="' . $row["id"] . '" class="read-more-trigger"></label><br /><br />';
             } else {
-                echo '<input type="checkbox" class="read-more-state" id="' . $row["id"] . '" /><p class="read-more-wrap">' . nl2br(substr(preg_replace($url, '<a href="http$2://$4" target="_blank" title="$0" class="link">$0</a>', htmlspecialchars($row["file"])), 0, $skip)) . "<span class='dots'>...</span><span class='read-more-target'> " . nl2br(substr(preg_replace($url, '<a href="http$2://$4" target="_blank" title="$0" class="link">$0</a>', htmlspecialchars($row["file"])), $skip)) . '</span></p><label for="' . $row["id"] . '" class="read-more-trigger"></label>';
+                echo '<input type="checkbox" class="read-more-state" id="' . $row["id"] . '" /><p class="read-more-wrap">' . nl2br(substr(preg_replace($url, '<a href="http$2://$4" target="_blank" title="$0" class="link">$0</a>', htmlspecialchars($row["file"])), 0, $skip)) . "<span class='dots'>...</span><span class='read-more-target'> " . nl2br(substr(preg_replace($url, '<a href="http$2://$4" target="_blank" title="$0" class="link">$0</a>', htmlspecialchars($row["file"])), $skip)) . '</span></p><label for="' . $row["id"] . '" class="read-more-trigger"></label><br /><br />';
             }
-        } else if (strlen($row["file"]) > 200) {
-            echo '<input type="checkbox" class="read-more-state" id="' . $row["id"] . '" /><p class="read-more-wrap">' . nl2br(substr(preg_replace($url, '<a href="http$2://$4" target="_blank" title="$0" class="link">$0</a>', htmlspecialchars($row["file"])), 0, 200)) . "<span class='dots'>...</span><span class='read-more-target'> " . nl2br(substr(preg_replace($url, '<a href="http$2://$4" target="_blank" title="$0" class="link">$0</a>', htmlspecialchars($row["file"])), 200)) . '</span></p><label for="' . $row["id"] . '" class="read-more-trigger"></label>';
+        } else if (strlen($row["file"]) > 400) {
+            echo '<input type="checkbox" class="read-more-state" id="' . $row["id"] . '" /><p class="read-more-wrap">' . nl2br(substr(preg_replace($url, '<a href="http$2://$4" target="_blank" title="$0" class="link">$0</a>', htmlspecialchars($row["file"])), 0, 400)) . "<span class='dots'>...</span><span class='read-more-target'> " . nl2br(substr(preg_replace($url, '<a href="http$2://$4" target="_blank" title="$0" class="link">$0</a>', htmlspecialchars($row["file"])), 400)) . '</span></p><label for="' . $row["id"] . '" class="read-more-trigger"></label><br /><br />';
         } else {
             echo '<p>' . nl2br(preg_replace($url, '<a href="http$2://$4" target="_blank" title="$0" class="link">$0</a>', htmlspecialchars($row["file"]))) . '<p>';
         }
         if (isset($row['image']) && !empty($row['image'])) {
-            echo '<br /><br /><img src="' . $row['image'] . '" style="max-width:100%;max-height:500px;" loading="lazy" alt="Image_missing"/>';
+            echo '<img src="' . $row['image'] . '" style="height:'.$row["height"].'px;width:'.$row["width"].'px;max-width:100%;max-height:500px;" loading="lazy" alt="Image_missing"/>';
         }
         echo "<p style='color:grey;font-size:13px;text-align:right;'>" . date('j M Y', strtotime($row["date"])) . " at " . date('g:i a', strtotime($row["time"])) . "</p></div>";
     }

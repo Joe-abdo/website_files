@@ -13,7 +13,7 @@ include_once('bj.php')
         <p>Error,this page isn't available.</p>
     </div>
     <div class="topnav" id="myTopnav">
-        <a href="https://<?php echo $tld?>/"><i class="fas fa-home"></i><span class="hide"> Home</span></a>
+        <a href="<?php echo $tld?>"><i class="fas fa-home"></i><span class="hide"> Home</span></a>
         <a href="/post"><i class="fas fa-comment-alt"></i><span class="hide"> Post</span></a>
         <a href="#contact"><i class="far fa-address-card"></i><span class="hide"> Contact</span></a>
         <a href="/about"><i class="fas fa-info-circle"></i><span class="hide"> About</span></a>

@@ -16,7 +16,7 @@ include_once('bj.php')
          <p>The world's best site, <span style="text-decoration:line-through;">my</span> our website.</p>
       </div>
       <div class="topnav" id="myTopnav">
-         <a href="https://<?php echo $tld?>/" ><i class="fas fa-home"></i><span class="hide"> Home</span></a>
+         <a href="<?php echo $tld?>/" ><i class="fas fa-home"></i><span class="hide"> Home</span></a>
          <a href="#top" class="active"><i class="fas fa-comment-alt"></i><span class="hide"> Post</span></a>
          <a href="#contact"><i class="far fa-address-card"></i><span class="hide"> Contact</span></a>
          <a href="/about" ><i class="fas fa-info-circle"></i><span class="hide"> About</span></a>
@@ -55,14 +55,17 @@ if (!empty($_FILES['image']['tmp_name']) && file_exists($_FILES['image']['tmp_na
                     if ($ext == 'jpg' || $ext == 'jpeg') {
                         $img = imagecreatefromjpeg($_FILES['image']['tmp_name']);
 						imagewebp($img, "./pictures/" . $newFilename, 70);
+						list($width, $height) = getimagesize($_FILES['image']['tmp_name']);
 						imagedestroy($img);
                     } elseif ($ext == 'png') {
                         $img = imagecreatefrompng($_FILES['image']['tmp_name']);
 						imagewebp($img, "./pictures/" . $newFilename, 70);
+						list($width, $height) = getimagesize($_FILES['image']['tmp_name']);
 						imagedestroy($img);
                     }
                 } elseif ($ext == 'gif') {
 					$newFilename = mysqli_real_escape_string($conn, $_FILES["image"]["name"] ."_". random_int(-time(), 0) . "_". uniqid() .".gif");
+					list($width, $height) = getimagesize($_FILES['image']['tmp_name']);
                     move_uploaded_file($_FILES["image"]["tmp_name"],"./pictures/" . $newFilename);
                 }
                 $txt = mysqli_real_escape_string($conn, trim($_POST['file'], " \t\n\r\0\x0B\s+"));
@@ -81,8 +84,8 @@ if (!empty($_FILES['image']['tmp_name']) && file_exists($_FILES['image']['tmp_na
 if (empty($txt) && empty($image)) {
     echo "<p>Thanks, for nothing...</p>";
 } else {
-    $sql = "INSERT INTO table1 (file,image,date,time)
-              VALUES ('$txt','$image',$date,$time)";
+    $sql = "INSERT INTO table1 (file,image,width,height,date,time)
+              VALUES ('$txt','$image','$width','$height',$date,$time)";
     if (!mysqli_query($conn, $sql)) {
         die('Error: ' . mysqli_error($conn));
     }
