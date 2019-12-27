@@ -13,7 +13,7 @@ include_once('bj.php')
         <p>The world's best site, <span style="text-decoration:line-through;">my</span> our website.</p>
     </div>
     <div class="topnav" id="myTopnav">
-        <a href="<?php echo $tld?>/"><i class="fas fa-home"></i><span class="hide"> Home</span></a>
+        <a href="https://<?php echo $tld?>"><i class="fas fa-home"></i><span class="hide"> Home</span></a>
         <a href="#top" class="active"><i class="fas fa-comment-alt"></i><span class="hide"> Post</span></a>
         <a href="#contact"><i class="far fa-address-card"></i><span class="hide"> Contact</span></a>
         <a href="/about"><i class="fas fa-info-circle"></i><span class="hide"> About</span></a>
@@ -42,7 +42,7 @@ include_once('bj.php')
                         console.log(timezone_offset_minutes);
                         document.cookie = "tyme=" + timezone_offset_minutes;
                     </script>
-                    <input type="reset" value="Cancel" onclick="document.getElementById('image-preview').style.display = 'none'" style="font-weight: bold;">
+                    <input type="reset" value="Cancel" onclick="window.location='https://<?php echo $tld?>';" style="font-weight: bold;">
                     <input type="submit" value="Post&nbsp;&rarr;" onclick="this.disabled=true;this.value='Posting...';this.form.submit();" style="font-weight: bold;" />
                 </form>
             </div>
