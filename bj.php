@@ -1,4 +1,4 @@
-<title>Joe-abdo|<?php echo $page_name;$tld="http://player87.hostfree.pw";$ver="Ω 1.7.3"?></title>
+<title>Joe-abdo|<?php echo $page_name;$tld="localhost"?></title>
 <meta charset="utf-8" />
 <meta name="google" content="notranslate">
 <link rel="icon" href="/favicon.ico" type="image/x-icon">
