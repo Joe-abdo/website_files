@@ -9,6 +9,8 @@
  `id` int(11) NOT NULL AUTO_INCREMENT,
  `file` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
  `image` text DEFAULT NULL,
+ `width` text NOT NULL,
+ `height` text NOT NULL,
  `date` date NOT NULL,
  `time` time NOT NULL,
  PRIMARY KEY (`id`)
