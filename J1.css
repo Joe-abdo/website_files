@@ -165,6 +165,12 @@
    -moz-hyphens: auto;
         hyphens: auto;
 }
+.card img{
+max-width:100%;
+max-height:500px;
+width: auto;
+height: auto;
+}
 
 a.link:link, a.link:visited {
   color: rgb(125, 45, 235);

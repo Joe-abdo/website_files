@@ -30,7 +30,7 @@ a.download:hover, a.download:active {
          <p>The world's best site, <span style="text-decoration:line-through;">my</span> our website.</p>
       </div>
       <div class="topnav" id="myTopnav">
-         <a href="<?php echo $tld?>/" ><i class="fas fa-home"></i><span class="hide"> Home</span></a>
+         <a href="https://<?php echo $tld?>/" ><i class="fas fa-home"></i><span class="hide"> Home</span></a>
          <a href="/post"><i class="fas fa-comment-alt"></i><span class="hide"> Post</span></a>
          <a href="#contact"><i class="far fa-address-card"></i><span class="hide"> Contact</span></a>
          <a href="#top" class="active"><i class="fas fa-info-circle"></i><span class="hide"> About</span></a>
@@ -45,7 +45,7 @@ a.download:hover, a.download:active {
             </div>
             <div class='card'>
                <h1 style="font-size:30px"><img src="/favicon.png" alt="Image" style="float:left;max-width: 100%;max-height:200px;" loading="lazy">Joe-abdo<sub style="font-size:20px; color:gray">(2018-&infin;)</sub></h1>
-               <p>| Website | <?php echo $tld?> |</p>
+               <p>| Website | https://<?php echo $tld?> |</p>
                <p  style="font-size:15px">Joe-abdo(the website) is a social media platform owned, run, managed, administrated...etc., all by Joe-abdo(the person), and is constantly being worked on, in order to improve and provide a richer user experience.<br /><br /><b style="color:gray;">Started:</b>November 6, 2018</p>
             </div>
          </div>

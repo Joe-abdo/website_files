@@ -28,9 +28,10 @@ if ($result->num_rows > 0) {
             echo '<p>' . nl2br(preg_replace($url, '<a href="http$2://$4" target="_blank" title="$0" class="link">$0</a>', htmlspecialchars($row["file"]))) . '<p>';
         }
         if (isset($row['image']) && !empty($row['image'])) {
-            echo '<img src="' . $row['image'] . '" style="height:'.$row["height"].'px;width:'.$row["width"].'px;max-width:100%;max-height:500px;" loading="lazy" alt="Image_missing"/>';
+            echo '<img src="' . $row['image'] . '" height='.$row["height"].'px;width='.$row["width"].'px; loading="lazy" alt="Image_missing"/>';
         }
         echo "<p style='color:grey;font-size:13px;text-align:right;'>" . date('j M Y', strtotime($row["date"])) . " at " . date('g:i a', strtotime($row["time"])) . "</p></div>";
+		//comments
     }
 } 
 $conn->close();
