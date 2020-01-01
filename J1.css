@@ -123,6 +123,9 @@ max-height:500px;
 width: auto;
 height: auto;
 }
+.card p{
+	font-size: 1.2em;
+}
 a.link:link, a.link:visited {
   color: rgb(125, 45, 235);
   color: rgba(125, 45, 235, 0.8); 
