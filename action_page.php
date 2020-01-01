@@ -25,7 +25,7 @@ include_once('bj.php')
 	     <div class="text">
              <?php
 include_once ('connect.php');
-$timezone_offset_minutes = $_COOKIE['tyme'];
+$timezone_offset_minutes = mysqli_real_escape_string($conn,$_COOKIE['tyme']);
 if ($timezone_offset_minutes >= 0){
 	$sign = '+' ;
 }else{
