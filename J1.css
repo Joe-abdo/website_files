@@ -124,7 +124,7 @@ width: auto;
 height: auto;
 }
 .card p{
-	font-size: 1.2em;
+	font-size: 1em;
 }
 a.link:link, a.link:visited {
   color: rgb(125, 45, 235);
@@ -196,7 +196,7 @@ a.link:hover, a.link:active {
   content: 'Read less';
 }
 .read-more-trigger {
-  font-size: 13px;
+  font-size: 1em;
   color: rgb(145, 65, 255);
   border:1px solid rgb(145, 65, 255);
   border-radius: 2px;

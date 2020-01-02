@@ -22,7 +22,7 @@ include_once('bj.php')
         <div style="text-align:center;">
             <div class="container">
                 <form action="/action_page" method="post" enctype="multipart/form-data">
-                    <textarea name="file" placeholder="What's up, nigga?" style="text-align:left" maxlength="1200"></textarea>
+                    <textarea name="file" placeholder="What's up, nigga?" style="text-align:left" maxlength="400"></textarea>
                     <input type="file" accept='image/*' name="image" id="image-source" onchange="previewImage();" />
 					<label for="image-source">+Add image <i class="far fa-file-image"></i> <b>?</b></label>
                     <img id="image-preview" src="." alt="" style="width:50%;max-width:200px;max-height:200px;display:none;margin-left:auto;margin-right:auto;" />
