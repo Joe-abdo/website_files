@@ -1,13 +1,14 @@
 # Joe-abdo
 A simple attempt to create an open source social media platform 
 
-## Server:  
+## Setup
+ Server:  
 * Apache  
 * Database client version: libmysql - mysqlnd 5.0.12-dev  
 * PHP extension: mysqli curl mbstring  
 * PHP version: 7.3.2  
 
-## SQL:
+SQL:
 ```SQL
 CREATE TABLE `table1` (
  `id` int(11) NOT NULL AUTO_INCREMENT,
