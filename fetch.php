@@ -27,7 +27,7 @@ if ($result->num_rows > 0) {
         if (isset($row['image']) && !empty($row['image'])) {
             echo '<img src="' . $row['image'] . '" height='.$row["height"].'px;width='.$row["width"].'px; loading="lazy" alt="Image_missing"/>';
         }
-        echo "<a class ='date'>" . date('j M Y', strtotime($row["date"])) . " at " . date('g:i a', strtotime($row["time"])) . "</a></div>";
+        echo "<br /><a class ='date'>" . date('j M Y', strtotime($row["date"])) . " at " . date('g:i a', strtotime($row["time"])) . "</a></div>";
     }
 } 
 $conn->close();
