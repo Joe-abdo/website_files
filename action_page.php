@@ -52,14 +52,21 @@ if (!empty($_FILES['image']['tmp_name']) && file_exists($_FILES['image']['tmp_na
                 $txt = "";
             } else {
                 if ($ext != 'gif') {
+					
 					$newFilename = mysqli_real_escape_string($conn, $_FILES["image"]["name"] ."_". random_int(-time(), 0) . "_". uniqid() .".webp");
                     if ($ext == 'jpg' || $ext == 'jpeg') {
                         $img = imagecreatefromjpeg($_FILES['image']['tmp_name']);
+						imagepalettetotruecolor($img);
+						imagealphablending($img, true);
+						imagesavealpha($img, true);
 						imagewebp($img, "./pictures/" . $newFilename, 70);
 						list($width, $height) = getimagesize($_FILES['image']['tmp_name']);
 						imagedestroy($img);
                     } elseif ($ext == 'png') {
                         $img = imagecreatefrompng($_FILES['image']['tmp_name']);
+						imagepalettetotruecolor($img);
+						imagealphablending($img, true);
+						imagesavealpha($img, true);
 						imagewebp($img, "./pictures/" . $newFilename, 70);
 						list($width, $height) = getimagesize($_FILES['image']['tmp_name']);
 						imagedestroy($img);
