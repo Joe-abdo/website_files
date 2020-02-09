@@ -393,7 +393,7 @@ th, td {
     display:none;
 	text-align:left;
  }
-@media screen and (max-width: 500px){
+@media screen and (max-width: 800px){
  .wide {
      display:none;
  }
