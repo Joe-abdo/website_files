@@ -66,7 +66,7 @@
      position: -webkit-sticky; /* Safari */
      position:sticky;
      top:0;
-	 z-index: 999999;
+	 z-index: 3;
 }
  .topnav a {
      float: left;
@@ -124,7 +124,7 @@ width: auto;
 height: auto;
 }
 .card p{
-	font-size: 1em;
+	font-size: 1.4em;
 }
 .card .date{
 	font-size:13px;
@@ -170,10 +170,10 @@ a.link:hover, a.link:active {
   display: none;
 }
 .read-more-target br {
-    content: ' '
+    content: ' ';
 }
 .read-more-target br:after {
-    content: ' '
+    content: ' ';
 }
 .read-more-state:checked ~ .read-more-wrap .read-more-target br{
   opacity: 1;
@@ -186,6 +186,7 @@ a.link:hover, a.link:active {
     white-space: pre;
 }
 .read-more-target {
+
   opacity: 0;
   max-height: 0;
   font-size: 0;

@@ -9,7 +9,7 @@ if ($result->num_rows > 0) {
     while ($row = $result->fetch_assoc()) {
         echo "<div class='card'><p style='color:grey;font-size:13px'>id:" . $row["id"] . "-</p>";
          if (isset($row['file']) && !empty($row['file'])) {
-			 $text = trim(preg_replace('#[\s+]\*{1}(.*?)\*{1}[\s+]#', '<b> $1 </b>',preg_replace($url, '<a href="http$2://$4" target="_blank" title="$0" class="link">$0</a>', htmlspecialchars(" ".$row["file"]." "))));
+			 $text = trim(preg_replace('#[\s+]\*{1}(.*[\S])\*{1}[\s+]#', '<b> $1 </b>',preg_replace($url, '<a href="http$2://$4" target="_blank" title="$0" class="link">$0</a>', htmlspecialchars(" ".$row["file"]." "))));
            $a   = 0;
         $tok = strtok($row["file"], "\n");
         while ($tok !== false && $a < 11) {

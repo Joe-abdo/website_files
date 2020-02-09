@@ -42,7 +42,7 @@ include_once('bj.php')
                         console.log(timezone_offset_minutes);
                         document.cookie = "tyme=" + timezone_offset_minutes;
                     </script>
-                    <input type="reset" value="Cancel" onclick="window.location='https://<?php echo $tld?>';" style="font-weight: bold;">
+                    <input type="reset" value="Cancel" onclick="window.location='https://<?php echo $tld?>/post';" style="font-weight: bold;">
                     <input type="submit" value="Post&nbsp;&rarr;" onclick="this.disabled=true;this.value='Posting...';this.form.submit();" style="font-weight: bold;" />
                 </form>
             </div>
