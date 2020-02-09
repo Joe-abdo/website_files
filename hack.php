@@ -630,7 +630,7 @@ th, td {
 ═══════════════╡
 </p>
 	  </div>
-   <?php echo $closing_body_tag?>
+   <!-- </body> -->
    <script>
    var carousel = document.querySelector('.carousel');
 var cells = carousel.querySelectorAll('.carousel__cell');
