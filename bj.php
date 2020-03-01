@@ -1,5 +1,6 @@
-<title>Joe-abdo|<?php echo $page_name;$tld="https://localhost";$ver="Ω 1.8.3"?></title><!-- β Ω|λ Σ Δ φ ξ Ж ∝ ζ ℝ ☆ -->
+<title>Joe-abdo|<?php echo $page_name;$tld="https://localhost";$ver="Ω 1.8.4"?></title><!-- β |Ω λ Σ Δ φ ξ Ж ∝ ζ ℝ ☆ -->
 <meta charset="utf-8" />
+<meta name="robots" content="nofollow" />
 <meta name="google" content="notranslate">
 <link rel="icon" href="/favicon.ico" type="image/x-icon">
 <link rel="shortcut icon" href="/favicon.ico">

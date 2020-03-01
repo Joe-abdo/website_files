@@ -4,6 +4,7 @@ header("refresh:3;url=index.php");
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<meta name="robots" content="noindex" />
 <?php
 $page_name = 'Post';
 include_once('bj.php')
