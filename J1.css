@@ -325,7 +325,7 @@
      padding: 3px;
      position: relative;
      float: left;
-     left: 50%;
+     left: 40%;
      margin-top: 20px;
 }
  .loader {
@@ -340,7 +340,7 @@
      animation: spin 2s linear infinite;
      position: relative;
      float: left;
-     left: 50%;
+     left: 40%;
      margin-top: 20px;
 }
  @-webkit-keyframes spin {
@@ -425,5 +425,5 @@
     /* 1. */
 }
 html{
-	scroll-behaviour: smooth;
+	scroll-behavior: smooth;
 }
