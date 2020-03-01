@@ -1,4 +1,4 @@
-<title>Joe-abdo|<?php echo $page_name;$tld="localhost";$ver="Ω 1.8.0"?></title>
+<title>Joe-abdo|<?php echo $page_name;$tld="https://localhost";$ver="Ω 1.8.2"?></title>
 <meta charset="utf-8" />
 <meta name="google" content="notranslate">
 <link rel="icon" href="/favicon.ico" type="image/x-icon">
@@ -17,3 +17,16 @@
 <meta name="twitter:description" property="og:description" content="The world's best site, our website." />
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.9.0/css/all.css">
 <link rel="stylesheet" href="/J1.css">
+<link rel="stylesheet" href="/nigga.css">
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+  const checkbox = document.querySelector('.dark-mode-checkbox');
+
+  checkbox.checked = localStorage.getItem('darkMode') === 'true';
+
+  checkbox.addEventListener('change', function (event) {
+    localStorage.setItem('darkMode', event.currentTarget.checked);
+  });
+});
+</script>
+<?php $closing_body_tag="<!-- </body> -->" ?>

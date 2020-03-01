@@ -6,7 +6,8 @@ $page_name = 'About';
 include_once('bj.php')
 ?>
 	  <style>
-a.download:link, a.download:visited {
+a.download:link,
+ a.download:visited {
   background-color: rgb(125, 45, 235);
   background-color: rgba(125, 45, 235, 0.8);
   color: white;
@@ -17,20 +18,37 @@ a.download:link, a.download:visited {
   border-radius:5px;
 }
 
-a.download:hover, a.download:active {
+a.download:hover,
+ a.download:active {
    background-color: rgb(80, 30, 155);
    background-color: rgba(80, 30, 155, 0.8);
 }
+
+.dark-mode-checkbox:checked ~ .theme-container a.download:link,
+.dark-mode-checkbox:checked ~ .theme-container a.download:visited {
+     color: #222;
+	 background-color: rgb(105, 25, 215);
+}
+ .dark-mode-checkbox:checked ~ .theme-container a.download:hover,
+ .dark-mode-checkbox:checked ~ .theme-container a.download:active {     
+	 background-color: rgb(125, 45, 235);
+	 
+}
       </style>
    </head>
-   <body>
-      <a id="top"></a>
+   <body><a id="top"></a>
+   <input id="dark-mode" class="dark-mode-checkbox visually-hidden" type="checkbox">
+<div class="theme-container grow">
+      
       <div class="header">
+	  <label class="dark-mode-label" for="dark-mode" style="float:right">
+	Dark mode
+  </label>
          <h1>Joe-abdo</h1>
          <p>The world's best site, <span style="text-decoration:line-through;">my</span> our website.</p>
       </div>
       <div class="topnav" id="myTopnav">
-         <a href="https://<?php echo $tld?>/" ><i class="fas fa-home"></i><span class="hide"> Home</span></a>
+         <a href="<?php echo $tld?>/" ><i class="fas fa-home"></i><span class="hide"> Home</span></a>
          <a href="/post"><i class="fas fa-comment-alt"></i><span class="hide"> Post</span></a>
          <a href="#contact"><i class="far fa-address-card"></i><span class="hide"> Contact</span></a>
          <a href="#top" class="active"><i class="fas fa-info-circle"></i><span class="hide"> About</span></a>
@@ -45,7 +63,7 @@ a.download:hover, a.download:active {
             </div>
             <div class='card'>
                <h1 style="font-size:30px"><img src="/favicon.png" alt="Image" style="float:left;max-width: 100%;max-height:200px;" loading="lazy">Joe-abdo<sub style="font-size:20px; color:gray">(2018-&infin;)</sub></h1>
-               <p>| Website | https://<?php echo $tld?> |</p>
+               <p>| Website | <?php echo $tld?> |</p>
                <p  style="font-size:15px">Joe-abdo(the website) is a social media platform owned, run, managed, administrated...etc., all by Joe-abdo(the person), and is constantly being worked on, in order to improve and provide a richer user experience.<br /><br /><b style="color:gray;">Started:</b>November 6, 2018</p>
             </div>
          </div>
@@ -63,5 +81,6 @@ a.download:hover, a.download:active {
       <div class="footer">
          <h2>&copy;Copyright Joe-abdo technologies.co.ltd <?php echo date("Y"); ?></h2>
       </div>
-      <!-- body -->
+	  </div>
+      <?php echo $closing_body_tag?>
 </html>

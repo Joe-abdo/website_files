@@ -7,7 +7,7 @@ $result = $conn->query($sql);
 $url    = '@(http(s)?)?(://)?(([a-zA-Z])([-\w]+\.)+([^\s\.]+[^\s]*)+[^,.\s])@';
 if ($result->num_rows > 0) {
     while ($row = $result->fetch_assoc()) {
-        echo "<div class='card'><p style='color:grey;font-size:13px'>id:" . $row["id"] . "-</p>";
+        echo "<div class='card' dir='auto'><p style='color:grey;font-size:13px'>id:" . $row["id"] . "-</p>";
          if (isset($row['file']) && !empty($row['file'])) {
 			 $text = trim(preg_replace('#[\s+]\*{1}(.*[\S])\*{1}[\s+]#', '<b> $1 </b>',preg_replace($url, '<a href="http$2://$4" target="_blank" title="$0" class="link">$0</a>', htmlspecialchars(" ".$row["file"]." "))));
            $a   = 0;
@@ -19,9 +19,9 @@ if ($result->num_rows > 0) {
         if ($a >= 11) {
             $array = explode("\n", $row["file"]);
             $skip  = strlen(implode("\n", array_slice($array, 0, 11)));               
-                echo '<input type="checkbox" class="read-more-state" id="' . $row["id"] . '" /><p class="read-more-wrap">' . nl2br(substr($text, 0, $skip)) . "<span class='dots'>...</span><span class='read-more-target'> " . nl2br(substr($text, $skip)) . '</span></p><label for="' . $row["id"] . '" class="read-more-trigger"></label><br /><br />';
+                echo '<input type="checkbox" class="read-more-state" id="' . $row["id"] . '" /><p class="read-more-wrap" dir="auto">' . nl2br(substr($text, 0, $skip)) . "<span class='dots'>...</span><span class='read-more-target' dir='auto'> " . nl2br(substr($text, $skip)) . '</span></p><label for="' . $row["id"] . '" class="read-more-trigger"></label><br /><br />';
 		} else {
-		echo '<p>' . nl2br($text) . '<p>';
+		echo '<p dir="auto">' . nl2br($text) . '<p>';
 		 }
 		}
         if (isset($row['image']) && !empty($row['image'])) {

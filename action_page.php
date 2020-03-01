@@ -11,12 +11,17 @@ include_once('bj.php')
 </head>
    <body>
    <a id="top"></a>
+   <input id="dark-mode" class="dark-mode-checkbox visually-hidden" type="checkbox">
+<div class="theme-container grow">
       <div class="header">
+	  <label class="dark-mode-label" for="dark-mode" style="float:right">
+	Dark mode
+  </label>
          <h1>Joe-abdo</h1>
          <p>The world's best site, <span style="text-decoration:line-through;">my</span> our website.</p>
       </div>
       <div class="topnav" id="myTopnav">
-         <a href="https://<?php echo $tld?>" ><i class="fas fa-home"></i><span class="hide"> Home</span></a>
+         <a href="<?php echo $tld?>" ><i class="fas fa-home"></i><span class="hide"> Home</span></a>
          <a href="#top" class="active"><i class="fas fa-comment-alt"></i><span class="hide"> Post</span></a>
          <a href="#contact"><i class="far fa-address-card"></i><span class="hide"> Contact</span></a>
          <a href="/about" ><i class="fas fa-info-circle"></i><span class="hide"> About</span></a>
@@ -25,7 +30,7 @@ include_once('bj.php')
 	     <div class="text">
              <?php
 include_once ('connect.php');
-$timezone_offset_minutes = mysqli_real_escape_string($conn,$_COOKIE['tyme']);
+$timezone_offset_minutes = $_COOKIE['tyme'];
 if ($timezone_offset_minutes >= 0){
 	$sign = '+' ;
 }else{
@@ -34,7 +39,7 @@ if ($timezone_offset_minutes >= 0){
 mysqli_query($conn, "SET SESSION time_zone = '".$sign."".$timezone_offset_minutes/60 .":00'");
 $date = "CURDATE()";
 $time = "CURTIME()";
-$width=''; $height='';
+$width=intval(NULL); $height=intval(NULL);
 $image_name = mysqli_real_escape_string($conn, strtolower($_FILES['image']['name']));
 if (!empty($_FILES['image']['tmp_name']) && file_exists($_FILES['image']['tmp_name'])) {
     $allowed = array('gif', 'png', 'jpg', 'jpeg');
@@ -52,21 +57,14 @@ if (!empty($_FILES['image']['tmp_name']) && file_exists($_FILES['image']['tmp_na
                 $txt = "";
             } else {
                 if ($ext != 'gif') {
-					
 					$newFilename = mysqli_real_escape_string($conn, $_FILES["image"]["name"] ."_". random_int(-time(), 0) . "_". uniqid() .".webp");
                     if ($ext == 'jpg' || $ext == 'jpeg') {
                         $img = imagecreatefromjpeg($_FILES['image']['tmp_name']);
-						imagepalettetotruecolor($img);
-						imagealphablending($img, true);
-						imagesavealpha($img, true);
 						imagewebp($img, "./pictures/" . $newFilename, 70);
 						list($width, $height) = getimagesize($_FILES['image']['tmp_name']);
 						imagedestroy($img);
                     } elseif ($ext == 'png') {
                         $img = imagecreatefrompng($_FILES['image']['tmp_name']);
-						imagepalettetotruecolor($img);
-						imagealphablending($img, true);
-						imagesavealpha($img, true);
 						imagewebp($img, "./pictures/" . $newFilename, 70);
 						list($width, $height) = getimagesize($_FILES['image']['tmp_name']);
 						imagedestroy($img);
@@ -103,5 +101,6 @@ mysqli_close($conn);
 ?>
 			</div>
       </div>
-  <!-- body -->
+	  </div>
+  <?php echo $closing_body_tag?>
 </html>

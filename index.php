@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,10 +8,17 @@ include_once('bj.php')
 ?>
 </head>
 <body>
+<a id="home"></a>
+<input id="dark-mode" class="dark-mode-checkbox visually-hidden" type="checkbox">
+<div class="theme-container grow">
+  
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <a id="home"></a>
+    
     <div class="header">
+	<label class="dark-mode-label" for="dark-mode" style="float:right">
+    Dark mode
+  </label>
         <h1>Joe-abdo</h1>
         <p>The world's best site, <span style="text-decoration:line-through;">my</span> our website.</p>
     </div>
@@ -29,6 +37,7 @@ include_once('bj.php')
             <div class="card">
                 <h3>Future updates:</h3>
                 <ul>
+				 <li>Accounts</li>
                     <li>Better image loading</li>
                     <li>gif compression</li>
                     <li>Like system</li>
@@ -51,7 +60,8 @@ include_once('bj.php')
     <div class="footer">
         <h2>&copy;Copyright Joe-abdo technologies.co.ltd <?php echo date("Y"); ?></h2>
     </div>
-</body>
+	</div>
+<?php echo $closing_body_tag?>
 <script>
 
 $(document).ready(function(){
@@ -100,5 +110,6 @@ $(document).ready(function(){
  });
  
 });
+
 </script>
 </html>

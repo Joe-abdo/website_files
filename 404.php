@@ -8,12 +8,17 @@ include_once('bj.php')
 </head>
 <body>
     <a id="top"></a>
+	<input id="dark-mode" class="dark-mode-checkbox visually-hidden" type="checkbox">
+<div class="theme-container grow">
     <div class="header">
+	<label class="dark-mode-label" for="dark-mode" style="float:right">
+	Dark mode
+  </label>
         <h1>404</h1>
         <p>Error,this page isn't available.</p>
     </div>
     <div class="topnav" id="myTopnav">
-        <a href="https://<?php echo $tld?>/"><i class="fas fa-home"></i><span class="hide"> Home</span></a>
+        <a href="<?php echo $tld?>"><i class="fas fa-home"></i><span class="hide"> Home</span></a>
         <a href="/post"><i class="fas fa-comment-alt"></i><span class="hide"> Post</span></a>
         <a href="#contact"><i class="far fa-address-card"></i><span class="hide"> Contact</span></a>
         <a href="/about"><i class="fas fa-info-circle"></i><span class="hide"> About</span></a>
@@ -54,5 +59,6 @@ include_once('bj.php')
     <div class="footer">
         <h2>&copy;Copyright Joe-abdo technologies.co.ltd <?php echo date("Y"); ?></h2>
     </div>
-<!-- body -->
+	</div>
+<?php echo $closing_body_tag?>
 </html>
