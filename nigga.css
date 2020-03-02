@@ -90,3 +90,11 @@
      border: 10px solid #333;
      border-top: 10px solid rgb(115, 35, 225);
  }
+  .dark-mode-checkbox:checked ~ .theme-container  progress {
+  background-color: rgb(39, 38, 41);
+     border: 1px solid #888787;
+}
+  .dark-mode-checkbox:checked ~ .theme-container progress::-webkit-progress-bar {
+ background-color:rgb(39, 38, 41);
+  border-radius: 2px;
+}

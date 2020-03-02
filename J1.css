@@ -238,7 +238,7 @@
      border-radius: 2px;
      box-sizing: border-box;
 }
- input[type=submit] {
+ input[type=button] {
      width: 48%;
      color: rgb(255,255,255);
      color: rgba(255,255,255,0.8);
@@ -262,7 +262,7 @@
      border-radius: 4px;
      cursor: pointer;
 }
- input[type=submit]:disabled{
+ input[type=button]:disabled{
      background-color: rgb(80, 30, 155);
      background-color: rgba(80, 30, 155, 0.8);
 }
@@ -285,9 +285,9 @@
  textarea:focus,
  textarea:hover,
  input[type=reset]:focus,
- input[type=submit]:focus,
+ input[type=button]:focus,
  input[type=reset]:hover,
- input[type=submit]:hover {
+ input[type=button]:hover {
      border-color: #6524bf;
      outline: 0;
      -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102, 175, 233, 0.6);
@@ -426,4 +426,27 @@
 }
 html{
 	scroll-behavior: smooth;
+}
+
+progress {
+  border-radius: 2px; 
+  width: 100%;
+     max-width: 100%;
+     min-width: 100%;
+  height: 22px;
+  /*margin-left:-11.5%;*/
+  margin:0;
+  background-color: rgb(250, 250, 250);
+     display: none;
+     border: 1px solid #ccc;
+}
+progress::-webkit-progress-bar {
+ background-color:rgb(250, 250, 250);
+  border-radius: 2px;
+}
+progress::-webkit-progress-value {
+   border-radius: 2px; 
+}
+progress::-moz-progress-bar {
+  /* style rules */
 }
