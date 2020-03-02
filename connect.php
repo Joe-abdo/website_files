@@ -1,7 +1,7 @@
 <?php
-$servername = "localhost";
-$username   = "root";
-$password   = "";
+$servername = "██████████████████";
+$username   = "████████████";
+$password   = "█████████████████";
 $dbname     = "id11552830_uploads";
 $conn       = new mysqli($servername, $username, $password, $dbname);
 if ($conn->connect_error) {
