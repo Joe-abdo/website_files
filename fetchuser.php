@@ -1,8 +1,17 @@
 <?php
+
+session_start();
+ 
+// Check if the user is logged in, if not then redirect him to login page
+if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
+    header("location: login.php");
+    exit;
+}
 if(isset($_POST["limit"], $_POST["start"]))
 {
 include_once('connect.php');
-$sql    = "SELECT * FROM table1 ORDER BY id DESC LIMIT ".$_POST["start"].", ".$_POST["limit"]."";
+$who = mysqli_real_escape_string($conn, trim($_SESSION['username'], " \t\n\r\0\x0B"));
+$sql    = "SELECT * FROM table1 WHERE posted_by = '$who' ORDER BY id DESC LIMIT ".$_POST["start"].", ".$_POST["limit"]."";
 $result = $conn->query($sql);
 $url    = '@(http(s)?)?(://)?(([a-zA-Z])([-\w]+\.)+([^\s\.]+[^\s]*)+[^,.\s])@';
 if ($result->num_rows > 0) {

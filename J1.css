@@ -238,7 +238,7 @@
      border-radius: 2px;
      box-sizing: border-box;
 }
- input[type=button] {
+ input[type=button],input[type=submit] {
      width: 48%;
      color: rgb(255,255,255);
      color: rgba(255,255,255,0.8);
@@ -262,17 +262,16 @@
      border-radius: 4px;
      cursor: pointer;
 }
- input[type=button]:disabled{
+ input[type=button]:disabled,input[type=submit]:disabled{
      background-color: rgb(80, 30, 155);
      background-color: rgba(80, 30, 155, 0.8);
 }
- textarea{
+ textarea, input[type=text],input[type=password]{
      cursor:text;
      text-align: center;
      width: 100%;
      max-width: 100%;
      min-width: 100%;
-     min-height:80px;
      background-color: rgb(250, 250, 250);
      padding: 12px 20px;
      margin: 8px 0;
@@ -281,13 +280,22 @@
      border-radius: 2px;
      box-sizing: border-box;
 }
+textarea{
+	min-height:80px;
+}
  input[type="file"]:focus + label,input[type="file"]:hover + label,
  textarea:focus,
  textarea:hover,
  input[type=reset]:focus,
  input[type=button]:focus,
+ input[type=submit]:focus,
  input[type=reset]:hover,
- input[type=button]:hover {
+ input[type=button]:hover,
+ input[type=submit]:hover,
+input[type=text]:focus,
+input[type=password]:focus,
+input[type=text]:hover,
+input[type=password]:hover {
      border-color: #6524bf;
      outline: 0;
      -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102, 175, 233, 0.6);
@@ -436,6 +444,7 @@ progress {
   height: 22px;
   /*margin-left:-11.5%;*/
   margin:0;
+  margin-top:15px;
   background-color: rgb(250, 250, 250);
      display: none;
      border: 1px solid #ccc;

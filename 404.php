@@ -17,11 +17,13 @@ include_once('bj.php')
         <h1>404</h1>
         <p>Error,this page isn't available.</p>
     </div>
-    <div class="topnav" id="myTopnav">
-        <a href="<?php echo $tld?>"><i class="fas fa-home"></i><span class="hide"> Home</span></a>
-        <a href="/post"><i class="fas fa-comment-alt"></i><span class="hide"> Post</span></a>
-        <a href="#contact"><i class="far fa-address-card"></i><span class="hide"> Contact</span></a>
-        <a href="/about"><i class="fas fa-info-circle"></i><span class="hide"> About</span></a>
+	<div class="topnav" id="myTopnav">
+         <a href="<?php echo $tld?>/" ><i class="fas fa-home"></i><span class="hide"> Home</span></a>
+         <a href="/post"><i class="fas fa-user"></i><span class="hide"> Profile</span></a>
+        <!-- <a href="#contact"><i class="far fa-address-card"></i><span class="hide"> Contact</span></a>-->
+         <a href="/about"><i class="fas fa-info-circle"></i><span class="hide"> About</span></a>
+		 <!-- <a ><i class="fas fa-cogs"></i><span class="hide"> Settings</span></a>-->
+		 <a href="/logout.php"  style="float:right"><i class="fas fa-sign-out-alt"></i><span class="hide"> Log out</span></a>
         <a href="#top" class="active"><i class="fas fa-exclamation-triangle"></i><span class="hide"> Ẹ̷͕̳̦̝̹͓̲̽͆̿̄̆͒̕̕͝͝ͅr̷͙̲̲̫̪͙͍̙͑͠ŗ̶̻̲̜͌̒ō̵̫̲̲͈̮̰͍͕̎͐̊̓͝r̵̢̘̠̖̋̓̐̆̉̐͆̊̈͝ ̶̨̛̳̼̲̅͗̈̇͊͝ͅ4̸̖̹̞̙̲͔̞͔̯͈͌0̴̦̠͉̱̾̔̊̒͑̄͊͆4̴̢̧̤͙̺̠̬͖͉̤̓̅̊̒̿</span></a>
     </div>
     <div class="row">

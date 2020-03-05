@@ -1,4 +1,12 @@
 <?php
+// Initialize the session
+session_start();
+ 
+// Check if the user is logged in, if not then redirect him to login page
+if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
+    header("location: login.php");
+    exit;
+}//$_SESSION['username']
 include_once ('connect.php');
 $timezone_offset_minutes = $_COOKIE['tyme'];
 if ($timezone_offset_minutes >= 0){
@@ -57,15 +65,27 @@ if (!empty($_FILES['image']['tmp_name']) && file_exists($_FILES['image']['tmp_na
     $image = "";
     $txt = mysqli_real_escape_string($conn, trim($_POST['file'], " \t\n\r\0\x0B"));
 }
+$who = mysqli_real_escape_string($conn, trim($_SESSION['username'], " \t\n\r\0\x0B"));
 if (empty($txt) && empty($image)) {
     echo " ";
 } else {
-    $sql = "INSERT INTO table1 (file,image,width,height,date,time)
-              VALUES ('$txt','$image','$width','$height',$date,$time)";
+    $sql = "INSERT INTO table1 (file,image,width,height,posted_by,date,time)
+              VALUES ('$txt','$image','$width','$height','$who',$date,$time)";
     if (!mysqli_query($conn, $sql)) {
         die('Error: ' . mysqli_error($conn));
     }
-    echo "<p>Thank you!</p>";
+	$url    = '@(http(s)?)?(://)?(([a-zA-Z])([-\w]+\.)+([^\s\.]+[^\s]*)+[^,.\s])@';
+    echo "<div class='card' dir='auto'><p style='font-size:1.2em;margin-top:5px'>&nbsp" . $who . "<br />
+		<span style='font-size:1em; color:#888'>@" . $who . "</span></p>";
+         if (isset( $txt) && !empty( $txt)) {
+			 $text = trim(preg_replace('#[\s+]\*{1}(.*[\S])\*{1}[\s+]#', '<b> $1 </b>',
+			 preg_replace($url, '<a href="http$2://$4" target="_blank" title="$0" class="link">$0</a>', htmlspecialchars(" ". $txt." "))));
+		echo '<p dir="auto">' . nl2br($text) . '<p>';
+		}
+        if (isset($image) && !empty($image)) {
+            echo '<img src="' . $image . '" height=' . $height.'px;width=' . $width . 'px; loading="lazy" alt="Image_missing"/>';
+        }
+        echo "<br /><a class ='date'>" . date('j M Y', strtotime($date)) . " just now </a></div>";
 }
 mysqli_close($conn);
 ?>

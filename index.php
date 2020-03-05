@@ -1,3 +1,13 @@
+<?php
+// Initialize the session
+session_start();
+ 
+// Check if the user is logged in, if not then redirect him to login page
+if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
+    header("location: login.php");
+    exit;
+}
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -23,11 +33,13 @@ include_once('bj.php')
         <p>The world's best site, <span style="text-decoration:line-through;">my</span> our website.</p>
     </div>
     <div class="topnav" id="myTopnav">
-        <a href="#home" class="active"><i class="fas fa-home"></i><span class="hide"> Home</span></a>
-        <a href="/post"><i class="fas fa-comment-alt"></i><span class="hide"> Post</span></a>
-        <a href="#contact"><i class="far fa-address-card"></i><span class="hide"> Contact</span></a>
-        <a href="/about"><i class="fas fa-info-circle"></i><span class="hide"> About</span></a>
-    </div>
+         <a href="#home" class="active"><i class="fas fa-home"></i><span class="hide"> Home</span></a>
+         <a href="/post"><i class="fas fa-user"></i><span class="hide"> Profile</span></a>
+        <!-- <a href="#contact"><i class="far fa-address-card"></i><span class="hide"> Contact</span></a>-->
+         <a href="/about" ><i class="fas fa-info-circle"></i><span class="hide"> About</span></a>
+		 <!-- <a ><i class="fas fa-cogs"></i><span class="hide"> Settings</span></a>-->
+		 <a href="/logout.php" style="float:right"><i class="fas fa-sign-out-alt"></i><span class="hide"> Log out</span></a>
+      </div>
     <div class="row">
         <div class="leftcolumn">
    <div id="load_data"></div>
@@ -37,7 +49,6 @@ include_once('bj.php')
             <div class="card">
                 <h3>Future updates:</h3>
                 <ul>
-				 <li>Accounts</li>
                     <li>Better image loading</li>
                     <li>gif compression</li>
                     <li>Like system</li>

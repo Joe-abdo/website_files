@@ -64,7 +64,9 @@
      background-color: rgb(80, 30, 155);
      background-color: rgba(80, 30, 155, 0.8);
 }
- .dark-mode-checkbox:checked ~ .theme-container textarea{
+ .dark-mode-checkbox:checked ~ .theme-container textarea,
+  .dark-mode-checkbox:checked ~ .theme-container input[type=password],
+ .dark-mode-checkbox:checked ~ .theme-container input[type=text]{
      color: rgb(172, 172, 172);
      background-color: rgb(39, 38, 41);
      border: 1px solid #888787;
@@ -76,7 +78,11 @@
  .dark-mode-checkbox:checked ~ .theme-container input[type=reset]:focus,
  .dark-mode-checkbox:checked ~ .theme-container input[type=submit]:focus,
  .dark-mode-checkbox:checked ~ .theme-container input[type=reset]:hover,
- .dark-mode-checkbox:checked ~ .theme-container input[type=submit]:hover {
+ .dark-mode-checkbox:checked ~ .theme-container input[type=submit]:hover,
+ .dark-mode-checkbox:checked ~ .theme-container input[type=password]:hover,
+ .dark-mode-checkbox:checked ~ .theme-container input[type=text]:hover,
+ .dark-mode-checkbox:checked ~ .theme-container input[type=password]:focus,
+ .dark-mode-checkbox:checked ~ .theme-container input[type=text]:focus {
      outline: 0;
      border-color: #6524bf;
      -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(110, 40, 205, 0.6);
@@ -94,7 +100,9 @@
   background-color: rgb(39, 38, 41);
      border: 1px solid #888787;
 }
-  .dark-mode-checkbox:checked ~ .theme-container progress::-webkit-progress-bar {
+  progress::-webkit-progress-bar {
  background-color:rgb(39, 38, 41);
   border-radius: 2px;
+} .dark-mode-checkbox:checked ~ .theme-container{
+	cursor:url(/my-mouse-pointer.cur), auto;
 }
