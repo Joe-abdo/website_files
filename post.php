@@ -7,6 +7,19 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
     header("location: login.php");
     exit;
 }
+include_once('connect.php');
+if (isset($_POST["newkek"]) && !empty($_POST["newkek"])){
+$who = mysqli_real_escape_string($conn, trim($_SESSION['username'], " \t\n\r\0\x0B"));
+$why = mysqli_real_escape_string($conn, trim($_POST["newkek"], " \t\n\r\0\x0B"));
+$sql1 = "UPDATE `table1` SET handle = '$why' WHERE posted_by = '$who'";
+if (!mysqli_query($conn, $sql1)) {
+die('Error: ' . mysqli_error($conn));
+}
+$sql2 = "UPDATE `users` SET handle = '$why' WHERE username = '$who'";
+if (!mysqli_query($conn, $sql2)) {
+die('Error: ' . mysqli_error($conn));
+}
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -38,7 +51,30 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
 		 <a href="/logout.php"  style="float:right"><i class="fas fa-sign-out-alt"></i><span class="hide"> Log out</span></a>
       </div>
          <div class="column middle">
-		 <p style='font-size:1.2em;'>'<?php echo $_SESSION["username"] ?>'</p>
+		 
+		 <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
+		 <input type='text' name="newkek" id="pain" placeholder="handle" style="text-align:left;max-width:200px;min-width:200px;padding-left:0;font-size:1em" maxlength="50" value='<?php
+		 $who = mysqli_real_escape_string($conn, trim($_SESSION['username'], " \t\n\r\0\x0B"));
+		 $sql = "SELECT handle FROM users WHERE username = '$who'";
+$result = $conn->query($sql);
+if ($result->num_rows > 0) {
+    while($row = $result->fetch_assoc()) {
+       echo " ". (isset($row['handle'])&& !empty($row['handle'])? $row['handle'] : $_SESSION["username"]) ."";
+	   $_SESSION['handle'] = $row['handle'];
+    }
+} else {
+    echo "error, some went wrong";
+}
+$conn->close();
+?>'></input>
+<?php
+echo "<img src='". (isset($row['profile'])&& !empty($row['profile'])? $row['profile'] : '/favicon.png' ) . "' style='max-widht:50px;max-height:50px;float:left;margin-right:5px;margin-top:5px' loading='lazy' alt='Image_missing'/>";
+?>
+<input type="submit" value="✓" style="width:50px">
+<p style='font-size:1.2em;margin:0;'>@<?php echo $_SESSION["username"] ?></p>
+
+</form>
+<br /><hr />
             <div style="text-align:center;">
                <div class="container">
 			   
@@ -57,7 +93,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
                   </form>
                </div>
             </div>
-			
+			<hr />
 			<div class="leftcolumn">
 			<h3 id="status"></h3>
    <div id="load_data"></div>
@@ -100,6 +136,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
            _('pain').value = "";
            _("image-preview").style.display = "none";
          _("progressBar").style.display = "none";
+		 window.location.replace("<?php echo $tld?>/post");
          }
          function errorHandler(event){
          	_("status").innerHTML = "Upload Failed";

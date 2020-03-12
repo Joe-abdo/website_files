@@ -21,7 +21,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             $stmt->bind_param("s", $param_username);
             
             // Set parameters
-            $param_username = trim($_POST["username"]);
+            $param_username = preg_replace('/\s+/', '',trim($_POST["username"]));
             
             // Attempt to execute the prepared statement
             if($stmt->execute()){
@@ -31,7 +31,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                 if($stmt->num_rows == 1){
                     $username_err = "This username is already taken.";
                 } else{
-                    $username = trim($_POST["username"]);
+                    $username = preg_replace('/\s+/', '',trim($_POST["username"]));
                 }
             } else{
                 echo "Oops! Something went wrong. Please try again later.";

@@ -1,14 +1,24 @@
 <?php
+session_start();
+ 
+// Check if the user is logged in, if not then redirect him to login page
+if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
+    header("location: login.php");
+    exit;
+}
 if(isset($_POST["limit"], $_POST["start"]))
 {
 include_once('connect.php');
-$sql    = "SELECT * FROM table1 ORDER BY id DESC LIMIT ".$_POST["start"].", ".$_POST["limit"]."";
+$who = mysqli_real_escape_string($conn, trim($_SESSION['username'], " \t\n\r\0\x0B"));
+$sql    = "SELECT * FROM table1 WHERE posted_by != '$who' ORDER BY id DESC LIMIT ".$_POST["start"].", ".$_POST["limit"]."";
 $result = $conn->query($sql);
 $url    = '@(http(s)?)?(://)?(([a-zA-Z])([-\w]+\.)+([^\s\.]+[^\s]*)+[^,.\s])@';
 if ($result->num_rows > 0) {
     while ($row = $result->fetch_assoc()) {
         //echo "<p style='color:grey;font-size:13px'>id:" . $row["id"] . "-</p>";
-		echo "<div class='card' dir='auto'><p style='font-size:1.2em;margin-top:5px'>&nbsp" . $row["posted_by"] . "<br />
+		echo "<div class='card' dir='auto'>
+		<img src='". (isset($row['profile'])&& !empty($row['profile'])? $row['profile'] : '/favicon.png' ) . "' style='max-widht:50px;max-height:50px;float:left;margin-right:5px' loading='lazy' alt='". (isset($row['handle'])&& !empty($row['handle'])? $row['handle'] : $row['posted_by']) ."'/>
+		<p style='font-size:1.2em;margin-top:5px'>" . (isset($row['handle'])&& !empty($row['handle'])? $row['handle'] : $row['posted_by']) . "<br />
 		<span style='font-size:1em; color:#888'>@" . $row["posted_by"] . "</span></p>";
          if (isset($row['file']) && !empty($row['file'])) {
 			 $text = trim(preg_replace('#[\s+]\*{1}(.*[\S])\*{1}[\s+]#', '<b> $1 </b>',preg_replace($url, '<a href="http$2://$4" target="_blank" title="$0" class="link">$0</a>', htmlspecialchars(" ".$row["file"]." "))));
