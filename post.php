@@ -20,13 +20,21 @@ if (!mysqli_query($conn, $sql2)) {
 die('Error: ' . mysqli_error($conn));
 }
 }
+if( !isset($_GET['user']) || empty($_GET['user']) || $_GET['user'] == NULL || $_GET['user'] == $_SESSION["username"]) { 
+$_SESSION['nigga'] = $_SESSION['username'];
+$self = TRUE;
+} else{
+$_SESSION['nigga'] = $_GET['user'];
+$self = FALSE;
+}
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
    <head>
       <?php
          $page_name = 'Post';
-         include_once('bj.php')
+         include_once('bj.php');
          ?>
    </head>
    <body>
@@ -44,7 +52,7 @@ die('Error: ' . mysqli_error($conn));
          </div>
          <div class="topnav" id="myTopnav">
          <a href="<?php echo $tld?>/" ><i class="fas fa-home"></i><span class="hide"> Home</span></a>
-         <a href="#top" class="active"><i class="fas fa-user"></i><span class="hide"> Profile</span></a>
+         <a <?php echo "".($self == TRUE? 'class="active" href="#top"' : 'href="'. $tld .'/post?user='.$_SESSION["username"].'"' )."" ?>><i class="fas fa-user"></i><span class="hide"> Profile</span></a>
         <!-- <a href="#contact"><i class="far fa-address-card"></i><span class="hide"> Contact</span></a>-->
          <a href="/about" ><i class="fas fa-info-circle"></i><span class="hide"> About</span></a>
 		 <!-- <a ><i class="fas fa-cogs"></i><span class="hide"> Settings</span></a>-->
@@ -53,38 +61,40 @@ die('Error: ' . mysqli_error($conn));
          <div class="column middle">
 		 
 		 <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
-		 <input type='text' name="newkek" id="pain" placeholder="handle" style="text-align:left;max-width:200px;min-width:200px;padding-left:0;font-size:1em" maxlength="50" value='<?php
-		 $who = mysqli_real_escape_string($conn, trim($_SESSION['username'], " \t\n\r\0\x0B"));
+		 <input type="text" name="newkek" id="pain" placeholder="handle" maxlength="50" style="text-align:left;max-width:200px;min-width:200px;padding-left:0;font-size:1em"  value='<?php
+		 $who = mysqli_real_escape_string($conn, trim($_SESSION['nigga'], " \t\n\r\0\x0B"));
 		 $sql = "SELECT handle FROM users WHERE username = '$who'";
 $result = $conn->query($sql);
 if ($result->num_rows > 0) {
     while($row = $result->fetch_assoc()) {
-       echo " ". (isset($row['handle'])&& !empty($row['handle'])? $row['handle'] : $_SESSION["username"]) ."";
+       echo " ". (isset($row['handle'])&& !empty($row['handle'])? $row['handle'] : $_SESSION["nigga"]) ."";
 	   $_SESSION['handle'] = $row['handle'];
     }
 } else {
     echo "error, some went wrong";
 }
 $conn->close();
-?>'></input>
+ echo "'".($self == FALSE? 'disabled' : '' )."" ?>></input>
 <?php
 echo "<img src='". (isset($row['profile'])&& !empty($row['profile'])? $row['profile'] : '/favicon.png' ) . "' style='max-widht:50px;max-height:50px;float:left;margin-right:5px;margin-top:5px' loading='lazy' alt='Image_missing'/>";
 ?>
-<input type="submit" value="✓" style="width:50px">
-<p style='font-size:1.2em;margin:0;'>@<?php echo $_SESSION["username"] ?></p>
+<input type="submit" value="✓" <?php echo "".($self == FALSE? 'style="display:none;"' : 'style="width:50px"' )."" ?>>
+<p style='font-size:1.2em;margin:0;'>@<?php echo $_SESSION["nigga"] ;
+?></p>
 
 </form>
-<br /><hr />
+<?php if ($self == TRUE) {
+	echo '<br /><hr />
             <div style="text-align:center;">
                <div class="container">
 			   
                   <form id="upload_form" enctype="multipart/form-data" method="post">
-                     <textarea name="file" id="pain" placeholder="What's up, nigga?" style="text-align:left" maxlength="400"></textarea>
-                     <input type="file" accept='image/*' name="image" id="image" onchange="previewImage();" />
+                     <textarea name="file" id="pain" placeholder="What&apos;s up, nigga?" style="text-align:left" maxlength="400"></textarea>
+                     <input type="file" accept="image/*" name="image" id="image" onchange="previewImage();" />
                      <label id="name" for="image">+Add image <i class="far fa-file-image"></i> <b>?</b></label>
                      <img id="image-preview" src="." alt="" style="width:50%;max-width:200px;max-height:200px;display:none;margin-left:auto;margin-right:auto;" />
                      <progress id="progressBar" value="0" max="100" style="width:300px;"></progress>
-                     <input type="reset" value="Cancel" onclick="window.location='<?php echo $tld?>/post';" style="font-weight: bold;">
+                     <input type="reset" value="Cancel" onclick="window.location='. $tld .'/post;" style="font-weight: bold;">
                      <input type="button" value="Post&nbsp;&rarr;" onclick="uploadFile()">
                      
                      <span style="display:none">
@@ -93,7 +103,10 @@ echo "<img src='". (isset($row['profile'])&& !empty($row['profile'])? $row['prof
                   </form>
                </div>
             </div>
-			<hr />
+<hr />';
+}else{
+	echo '';
+} ?>
 			<div class="leftcolumn">
 			<h3 id="status"></h3>
    <div id="load_data"></div>
