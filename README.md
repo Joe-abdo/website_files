@@ -8,6 +8,7 @@ A simple attempt to create an open source social media platform
 * PHP extension: mysqli curl mbstring  
 * PHP version: 7.3.2  
 
+i need to update this
 SQL:
 ```SQL
 CREATE TABLE `table1` (
