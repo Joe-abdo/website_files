@@ -20,14 +20,34 @@ if (!mysqli_query($conn, $sql2)) {
 die('Error: ' . mysqli_error($conn));
 }
 }
-if( !isset($_GET['user']) || empty($_GET['user']) || $_GET['user'] == NULL || $_GET['user'] == $_SESSION["username"]) { 
+if( !isset($_GET['user']) || empty($_GET['user']) || $_GET['user'] == NULL || $_GET['user'] == $_SESSION["username"]) {
 $_SESSION['nigga'] = $_SESSION['username'];
 $self = TRUE;
 } else{
 $_SESSION['nigga'] = $_GET['user'];
 $self = FALSE;
 }
-
+$order69 = FALSE;
+//echo php_egg_logo_guid();
+		 $who = mysqli_real_escape_string($conn, trim($_SESSION['nigga'], " \t\n\r\0\x0B"));
+		 $sql = "SELECT handle FROM users WHERE username = '$who'";
+$result = $conn->query($sql);
+if ($result->num_rows > 0) {
+    while($row = $result->fetch_assoc()) {
+       if (isset($row['handle'])&& !empty($row['handle'])){
+		   $hand = $row['handle'] ;
+	   }else{
+			 $hand =   $_SESSION["nigga"];
+	   } 
+	   $_SESSION['handle'] = $row['handle'];
+    }
+} elseif ($result->num_rows == 0) {
+	$_SESSION["nigga"] = $hand ='???????????';
+	$order69 = TRUE;
+} else {
+    $hand = "error, some went wrong";
+}
+$conn->close();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -59,29 +79,17 @@ $self = FALSE;
 		 <a href="/logout.php"  style="float:right"><i class="fas fa-sign-out-alt"></i><span class="hide"> Log out</span></a>
       </div>
          <div class="column middle">
+		 <p  <?php echo "".($order69 == TRUE? 'style="display:block;"' : 'style="display:none;"' )."" ?>>User not found</p>
+		 <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post" <?php echo "".($order69 == TRUE? 'style="display:none;"' : ' ' )."" ?>>
 		 
-		 <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
-		 <input type="text" name="newkek" id="pain" placeholder="handle" maxlength="50" style="text-align:left;max-width:200px;min-width:200px;padding-left:0;font-size:1em"  value='<?php
-		 $who = mysqli_real_escape_string($conn, trim($_SESSION['nigga'], " \t\n\r\0\x0B"));
-		 $sql = "SELECT handle FROM users WHERE username = '$who'";
-$result = $conn->query($sql);
-if ($result->num_rows > 0) {
-    while($row = $result->fetch_assoc()) {
-       echo " ". (isset($row['handle'])&& !empty($row['handle'])? $row['handle'] : $_SESSION["nigga"]) ."";
-	   $_SESSION['handle'] = $row['handle'];
-    }
-} else {
-    echo "error, some went wrong";
-}
-$conn->close();
- echo "'".($self == FALSE? 'disabled' : '' )."" ?>></input>
-<?php
+		 <?php
 echo "<img src='". (isset($row['profile'])&& !empty($row['profile'])? $row['profile'] : '/favicon.png' ) . "' style='max-widht:50px;max-height:50px;float:left;margin-right:5px;margin-top:5px' loading='lazy' alt='Image_missing'/>";
 ?>
-<input type="submit" value="✓" <?php echo "".($self == FALSE? 'style="display:none;"' : 'style="width:50px"' )."" ?>>
-<p style='font-size:1.2em;margin:0;'>@<?php echo $_SESSION["nigga"] ;
-?></p>
-
+		 <p id="hand" style="display:block;font-size:1.2em;"><?php echo $hand;?>   <a onclick="editname()" <?php echo "".($self == FALSE? 'style="display:none;" disabled' : ' ' )."" ?>><i class="fas fa-pen"></i></a>
+		 <br /><span style='font-size:1em; color:#888'>@<?php echo $_SESSION["nigga"] ; ?></span></p>
+		 <div id="shit" style="display:none"><input type="text" name="newkek"  placeholder="handle" maxlength="50" style="text-align:left;max-width:200px;min-width:200px;padding-left:0;font-size:1em;"  value='<?php echo $hand; echo "'".($self == FALSE? 'disabled' : '' )."" ?>></input>
+<input type="submit" value="✓" style="width:50px">
+<p style='font-size:1.2em; color:#888'>@<?php echo $_SESSION["nigga"] ; ?></p></div>
 </form>
 <?php if ($self == TRUE) {
 	echo '<br /><hr />
@@ -107,7 +115,7 @@ echo "<img src='". (isset($row['profile'])&& !empty($row['profile'])? $row['prof
 }else{
 	echo '';
 } ?>
-			<div class="leftcolumn">
+			<div class="leftcolumn" <?php echo "".($order69 == TRUE? 'style="display:none;"' : ' ' )."" ?>>
 			<h3 id="status"></h3>
    <div id="load_data"></div>
    <div id="load_data_message"></div>
@@ -219,5 +227,15 @@ echo "<img src='". (isset($row['profile'])&& !empty($row['profile'])? $row['prof
  });
  
 });				 
+
+function editname() {
+  var x = document.getElementById("shit");
+  if (x.style.display === "none") {
+    x.style.display = "block";
+  } else {
+    
+  }
+  document.getElementById("hand").style.display = "none";
+}
       </script>
 </html>
