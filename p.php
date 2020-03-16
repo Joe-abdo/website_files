@@ -157,7 +157,7 @@ echo "<img src='". (isset($row['profile'])&& !empty($row['profile'])? $row['prof
            _('pain').value = "";
            _("image-preview").style.display = "none";
          _("progressBar").style.display = "none";
-		 window.location.replace("<?php echo $tld?>/post");
+		 window.location.replace("<?php echo $tld?>/p");
          }
          function errorHandler(event){
          	_("status").innerHTML = "Upload Failed";
