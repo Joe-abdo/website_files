@@ -32,6 +32,12 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                     $username_err = "This username is already taken.";
                 } else{
                     $username = preg_replace('/\s+/', '',trim($_POST["username"]));
+					if (preg_match( "#^[a-zA-Z0-9]+$#" , trim($_POST["username"]) ))
+{
+$username = preg_replace('/\s+/', '',trim($_POST["username"]));
+} else {
+$username_err = "Please only use english letters and numbers (no spaces)";
+}
                 }
             } else{
                 echo "Oops! Something went wrong. Please try again later.";

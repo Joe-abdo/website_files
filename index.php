@@ -34,7 +34,7 @@ include_once('bj.php')
     </div>
     <div class="topnav" id="myTopnav">
          <a href="#home" class="active"><i class="fas fa-home"></i><span class="hide"> Home</span></a>
-         <a href="/post"><i class="fas fa-user"></i><span class="hide"> Profile</span></a>
+         <a href="/p"><i class="fas fa-user"></i><span class="hide"> Profile</span></a>
         <!-- <a href="#contact"><i class="far fa-address-card"></i><span class="hide"> Contact</span></a>-->
          <a href="/about" ><i class="fas fa-info-circle"></i><span class="hide"> About</span></a>
 		 <!-- <a ><i class="fas fa-cogs"></i><span class="hide"> Settings</span></a>-->

@@ -1,4 +1,14 @@
-﻿<!DOCTYPE html>
+﻿<?php 
+session_start();
+ 
+// Check if the user is logged in, if not then redirect him to login page
+if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
+    $order69= TRUE;
+} else{
+	$order69= FALSE;
+}
+?>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <?php
@@ -19,18 +29,18 @@ include_once('bj.php')
     </div>
 	<div class="topnav" id="myTopnav">
          <a href="<?php echo $tld?>/" ><i class="fas fa-home"></i><span class="hide"> Home</span></a>
-         <a href="/post"><i class="fas fa-user"></i><span class="hide"> Profile</span></a>
+         <a href="/p"><i class="fas fa-user"></i><span class="hide"> Profile</span></a>
         <!-- <a href="#contact"><i class="far fa-address-card"></i><span class="hide"> Contact</span></a>-->
          <a href="/about"><i class="fas fa-info-circle"></i><span class="hide"> About</span></a>
 		 <!-- <a ><i class="fas fa-cogs"></i><span class="hide"> Settings</span></a>-->
-		 <a href="/logout.php"  style="float:right"><i class="fas fa-sign-out-alt"></i><span class="hide"> Log out</span></a>
+		 <a href="/logout.php"  <?php echo "".($order69 == TRUE? 'style="display:none;"' : 'style="float:right"' )."" ?>><i class="fas fa-sign-out-alt"></i><span class="hide"> Log out</span></a>
         <a href="#top" class="active"><i class="fas fa-exclamation-triangle"></i><span class="hide"> Ẹ̷͕̳̦̝̹͓̲̽͆̿̄̆͒̕̕͝͝ͅr̷͙̲̲̫̪͙͍̙͑͠ŗ̶̻̲̜͌̒ō̵̫̲̲͈̮̰͍͕̎͐̊̓͝r̵̢̘̠̖̋̓̐̆̉̐͆̊̈͝ ̶̨̛̳̼̲̅͗̈̇͊͝ͅ4̸̖̹̞̙̲͔̞͔̯͈͌0̴̦̠͉̱̾̔̊̒͑̄͊͆4̴̢̧̤͙̺̠̬͖͉̤̓̅̊̒̿</span></a>
     </div>
     <div class="row">
         <div class="leftcolumn">
             <div class='card'>
                 <p style='color:grey;font-size:13px'>id: ̸̸̶̵̸̶̴̷̸̷̧̏̆́͋͘͠█̷̴̶̸̵̸̶̶̠̃̑̕͠- </p>
-                <p>Congratulations! You have found the super secret post,hidden from everyone else... Just kidding,you just entered a wrong link.Anyhow, nice to see you.</p>
+                <p>Congratulations! You have found the super secret post,hidden from everyone else... I'm kidding,you just entered a wrong link. Anyhow, nice to see you.</p>
                 <p style='color:grey;font-size:13px;text-align:right;'>31 Feb -0001 at 12:00 am</p>
             </div>
         </div>
