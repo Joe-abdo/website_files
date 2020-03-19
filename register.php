@@ -42,7 +42,6 @@ $username_err = "Please only use english letters and numbers (no spaces)";
             } else{
                 echo "Oops! Something went wrong. Please try again later.";
             }
-
             // Close statement
             $stmt->close();
         }
@@ -86,6 +85,7 @@ $username_err = "Please only use english letters and numbers (no spaces)";
                 // Redirect to login page
                 header("location: login.php");
             } else{
+				//die('Error: ' . mysqli_error($conn));
                 echo "Something went wrong. Please try again later.";
             }
 
@@ -140,5 +140,5 @@ include_once('bj.php')
 			By siging up, you also agree and understand that we now own 47.5% of your soul.</p>
         </form>
     </div></div></div>    </div>
-</body>
+<?php echo $closing_body_tag?>
 </html>

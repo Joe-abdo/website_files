@@ -75,7 +75,33 @@ if (empty($txt) && empty($image)) {
     if (!mysqli_query($conn, $sql)) {
         die('Error: ' . mysqli_error($conn));
     }
-    echo "Thank you";
+    //echo "Thank you";
+	$url    = '@(http(s)?)?(://)?(([a-zA-Z])([-\w]+\.)+([^\s\.]+[^\s]*)+[^,.\s])@';
+	echo "
+		<div class='card' dir='auto'>
+		<img src='". (isset($_SESSION['profile'])&& !empty($_SESSION['profile'])? $_SESSION['profile'] : '/favicon.png' ) . "' style='max-widht:50px;max-height:50px;float:left;margin-right:5px' loading='lazy' alt='". (isset($_SESSION['handle'])&& !empty($_SESSION['handle'])? $_SESSION['handle'] : $_SESSION['nigga']) ."'/>
+		<p style='font-size:1.2em;margin-top:5px;'>" . (isset($_SESSION['handle'])&& !empty($_SESSION['handle'])? $_SESSION['handle'] : $_SESSION['nigga']) . "<br />
+		<span style='font-size:1em; color:#888'>@" . $_SESSION["nigga"] . "</span></p>";
+         if (isset($txt) && !empty($txt)) {
+			 $text = trim(preg_replace('#[\s+]\*{1}(.*[\S])\*{1}[\s+]#', '<b> $1 </b>',preg_replace($url, '<a href="http$2://$4" target="_blank" title="$0" class="link">$0</a>', htmlspecialchars(" ".$txt." "))));
+           $a   = 0;
+        $tok = strtok($txt, "\n");
+        while ($tok !== false && $a < 11) {
+            ++$a;
+            $tok = strtok("\n");
+        }
+        if ($a >= 11) {
+            $array = explode("\n", $txt);
+            $skip  = strlen(implode("\n", array_slice($array, 0, 11)));               
+                echo '<input type="checkbox" class="read-more-state" id="x" /><p class="read-more-wrap" dir="auto">' . nl2br(substr($text, 0, $skip)) . "<span class='dots'>...</span><span class='read-more-target' dir='auto'> " . nl2br(substr($text, $skip)) . '</span></p><label for="x" class="read-more-trigger"></label><br /><br />';
+		} else {
+		echo '<p dir="auto">' . nl2br($text) . '<p>';
+		 }
+		}
+        if (isset($image) && !empty($image)) {
+            echo '<img src="' . $image . '" height='.$height.'px;width='. $width.'px; loading="lazy" alt="Image_missing"/>';
+        }
+        echo "<br /><a class ='date'>" . date('j M Y', strtotime($date)) . " at " . date('g:i a', strtotime($time)) . "</a></div>";
 }
 mysqli_close($conn);
 ?>

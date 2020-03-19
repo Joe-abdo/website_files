@@ -127,5 +127,5 @@ include_once('bj.php')
 		</div>
     </div>   
 </div>	
-</body>
+<?php echo $closing_body_tag?>
 </html>

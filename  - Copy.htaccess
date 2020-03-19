@@ -1,0 +1,22 @@
+
+php_value display_errors 1
+
+php_flag output_buffering on 
+
+ErrorDocument 404 /404.php
+ErrorDocument 403 /404.php
+
+RewriteEngine On
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^([^\.]+)$ $1.php [NC,L]
+
+RewriteEngine On
+RewriteCond %{HTTPS} off
+RewriteRule (.*) https://%{HTTP_HOST}%{REQUEST_URI} [R,L]
+
+Header append X-FRAME-OPTIONS DENY
+
+<files connect.php>
+order allow,deny
+deny from all
+</files>

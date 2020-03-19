@@ -72,7 +72,7 @@ $conn->close();
          </div>
          <div class="topnav" id="myTopnav">
          <a href="<?php echo $tld?>/" ><i class="fas fa-home"></i><span class="hide"> Home</span></a>
-         <a <?php echo "".($self == TRUE? 'class="active" href="#top"' : 'href="'. $tld .'/post?user='.$_SESSION["username"].'"' )."" ?>><i class="fas fa-user"></i><span class="hide"> Profile</span></a>
+         <a <?php echo "".($self == TRUE? 'class="active" href="#top"' : 'href="'. $tld .'/p?user='.$_SESSION["username"].'"' )."" ?>><i class="fas fa-user"></i><span class="hide"> Profile</span></a>
         <!-- <a href="#contact"><i class="far fa-address-card"></i><span class="hide"> Contact</span></a>-->
          <a href="/about" ><i class="fas fa-info-circle"></i><span class="hide"> About</span></a>
 		 <!-- <a ><i class="fas fa-cogs"></i><span class="hide"> Settings</span></a>-->
@@ -81,8 +81,8 @@ $conn->close();
          <div class="column middle">
 		 <p  <?php echo "".($order69 == TRUE? 'style="display:block;"' : 'style="display:none;"' )."" ?>>User not found</p>
 		 <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post" <?php echo "".($order69 == TRUE? 'style="display:none;"' : ' ' )."" ?>>
-		 
-		 <?php
+		 <!--<input type="file" accept="image/*" name="profile" id="profile"  /> -->
+		<?php //trying to add profile pics
 echo "<img src='". (isset($row['profile'])&& !empty($row['profile'])? $row['profile'] : '/favicon.png' ) . "' style='max-widht:50px;max-height:50px;float:left;margin-right:5px;margin-top:5px' loading='lazy' alt='Image_missing'/>";
 ?>
 		 <p id="hand" style="display:block;font-size:1.2em;"><?php echo $hand;?>   <a onclick="editname()" <?php echo "".($self == FALSE? 'style="display:none;" disabled' : ' ' )."" ?>><i class="fas fa-pen"></i></a>
@@ -157,7 +157,7 @@ echo "<img src='". (isset($row['profile'])&& !empty($row['profile'])? $row['prof
            _('pain').value = "";
            _("image-preview").style.display = "none";
          _("progressBar").style.display = "none";
-		 window.location.replace("<?php echo $tld?>/p");
+		// window.location.replace("<?php echo $tld?>/p");
          }
          function errorHandler(event){
          	_("status").innerHTML = "Upload Failed";
