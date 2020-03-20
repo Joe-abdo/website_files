@@ -7,7 +7,7 @@ A simple attempt to create an open source social media platform
 * Database client version: libmysql - mysqlnd 5.0.12-dev  
 * PHP extension: mysqli curl mbstring  
 * PHP version: 7.3.2  
-don't forgrt to edit the bj.php and connect.php to fit your domain and database :)
+don't forget to edit the bj.php and connect.php to fit your domain and database :)
 SQL:
 ```SQL
 CREATE TABLE `table1` (
