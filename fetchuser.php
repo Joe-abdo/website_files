@@ -18,7 +18,9 @@ if ($result->num_rows > 0) {
         //echo "<p style='color:grey;font-size:13px'>id:" . $row["id"] . "-</p>";
 		echo "
 		<div class='card' dir='auto'>
-		<img src='". (isset($row['profile'])&& !empty($row['profile'])? $row['profile'] : '/favicon.png' ) . "' style='max-widht:50px;max-height:50px;float:left;margin-right:5px' loading='lazy' alt='". (isset($row['handle'])&& !empty($row['handle'])? $row['handle'] : $row['posted_by']) ."'/>
+		<div style='height:52px;width:52px;float:left;margin-right:5px;margin-top:5px;padding:0;text-align:center;border:0;'>
+		<div style='width:50px;height:50px;display: table-cell;vertical-align: middle;'><img id='profile-preview' src='". (isset($row['profile'])&& !empty($row['profile'])? $row['profile'] : '/favicon.png' ) . "
+' style='max-height:50px;max-width:50px;display: inline-block;' loading='lazy' alt='Image_missing'/></div></div>
 		<p style='font-size:1.2em;margin-top:5px;'>" . (isset($row['handle'])&& !empty($row['handle'])? $row['handle'] : $row['posted_by']) . "<br />
 		<span style='font-size:1em; color:#888'>@" . $row["posted_by"] . "</span></p>";
          if (isset($row['file']) && !empty($row['file'])) {

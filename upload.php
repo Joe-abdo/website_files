@@ -67,16 +67,17 @@ if (!empty($_FILES['image']['tmp_name']) && file_exists($_FILES['image']['tmp_na
 }
 $who = mysqli_real_escape_string($conn, trim($_SESSION['username'], " \t\n\r\0\x0B"));
 $handle = mysqli_real_escape_string($conn, trim($_SESSION['handle'], " \t\n\r\0\x0B"));
+$profile = mysqli_real_escape_string($conn, trim($_SESSION['profile'], " \t\n\r\0\x0B"));
 if (empty($txt) && empty($image)) {
     echo " ";
 } else {
-    $sql = "INSERT INTO table1 (file,image,width,height,posted_by,handle,date,time)
-              VALUES ('$txt','$image','$width','$height','$who','$handle',$date,$time)";
+    $sql = "INSERT INTO table1 (file,image,width,height,posted_by,handle,profile,date,time)
+              VALUES ('$txt','$image','$width','$height','$who','$handle','$profile',$date,$time)";
     if (!mysqli_query($conn, $sql)) {
         die('Error: ' . mysqli_error($conn));
     }
-    //echo "Thank you";
-	$url    = '@(http(s)?)?(://)?(([a-zA-Z])([-\w]+\.)+([^\s\.]+[^\s]*)+[^,.\s])@';
+    echo "Thank you";
+	/*$url    = '@(http(s)?)?(://)?(([a-zA-Z])([-\w]+\.)+([^\s\.]+[^\s]*)+[^,.\s])@';
 	echo "
 		<div class='card' dir='auto'>
 		<img src='". (isset($_SESSION['profile'])&& !empty($_SESSION['profile'])? $_SESSION['profile'] : '/favicon.png' ) . "' style='max-widht:50px;max-height:50px;float:left;margin-right:5px' loading='lazy' alt='". (isset($_SESSION['handle'])&& !empty($_SESSION['handle'])? $_SESSION['handle'] : $_SESSION['nigga']) ."'/>
@@ -95,13 +96,13 @@ if (empty($txt) && empty($image)) {
             $skip  = strlen(implode("\n", array_slice($array, 0, 11)));               
                 echo '<input type="checkbox" class="read-more-state" id="x" /><p class="read-more-wrap" dir="auto">' . nl2br(substr($text, 0, $skip)) . "<span class='dots'>...</span><span class='read-more-target' dir='auto'> " . nl2br(substr($text, $skip)) . '</span></p><label for="x" class="read-more-trigger"></label><br /><br />';
 		} else {
-		echo '<p dir="auto">' . nl2br($text) . '<p>';
+		echo '<p dir="auto">' . nl2br($txt) . '<p>';
 		 }
 		}
         if (isset($image) && !empty($image)) {
             echo '<img src="' . $image . '" height='.$height.'px;width='. $width.'px; loading="lazy" alt="Image_missing"/>';
         }
-        echo "<br /><a class ='date'>" . date('j M Y', strtotime($date)) . " at " . date('g:i a', strtotime($time)) . "</a></div>";
+        echo "<br /><a class ='date'>now, at this time</a></div>";*/
 }
 mysqli_close($conn);
 ?>

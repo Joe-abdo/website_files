@@ -20,6 +20,62 @@ if (!mysqli_query($conn, $sql2)) {
 die('Error: ' . mysqli_error($conn));
 }
 }
+//php to upload profle goes here
+if (isset($_FILES["profile"]) && !empty($_FILES["profile"])){
+	$image_name = mysqli_real_escape_string($conn, strtolower($_FILES['profile']['name']));
+if (!empty($_FILES['profile']['tmp_name']) && file_exists($_FILES['profile']['tmp_name'])) {
+    $allowed = array('gif', 'png', 'jpg', 'jpeg');
+    $ext = pathinfo($image_name, PATHINFO_EXTENSION);
+    if (!in_array($ext, $allowed)) {
+        echo '<p>Sorry, only JPG, JPEG, PNG, & GIF files are allowed.</p>';
+        $image = "";
+    } else {
+        $check = getimagesize($_FILES["profile"]["tmp_name"]);
+        if ($check !== false) {
+            if ($_FILES["profile"]["size"] > 10000000) {
+                echo "Sorry, your file is too large.";
+                $image = "";
+            } else {
+                if ($ext != 'gif') {
+					$newFilename = mysqli_real_escape_string($conn, $_FILES["profile"]["name"] ."_". random_int(-time(), 0) . "_". uniqid() .".webp");
+                    if ($ext == 'jpg' || $ext == 'jpeg') {
+                        $img = imagecreatefromjpeg($_FILES['profile']['tmp_name']);
+						imagewebp($img, "./pictures/" . $newFilename, 70);
+						list($width, $height) = getimagesize($_FILES['profile']['tmp_name']);
+						imagedestroy($img);
+                    } elseif ($ext == 'png') {
+                        $img = imagecreatefrompng($_FILES['profile']['tmp_name']);
+						imagewebp($img, "./pictures/" . $newFilename, 70);
+						list($width, $height) = getimagesize($_FILES['profile']['tmp_name']);
+						imagedestroy($img);
+                    }
+                } elseif ($ext == 'gif') {
+					$newFilename = mysqli_real_escape_string($conn, $_FILES["profile"]["name"] ."_". random_int(-time(), 0) . "_". uniqid() .".gif");
+					list($width, $height) = getimagesize($_FILES['profile']['tmp_name']);
+                    move_uploaded_file($_FILES["profile"]["tmp_name"],"./pictures/" . $newFilename);
+                }
+				$image="pictures/" . $newFilename;
+            }
+        } else {
+            echo "<p>File is not an image.</p>";
+            $image = "";
+        }
+    }
+} else {
+    $image = "";
+}
+$who = mysqli_real_escape_string($conn, trim($_SESSION['username'], " \t\n\r\0\x0B"));
+if (!empty($image)) {
+    $sql = "UPDATE users SET profile = '$image' WHERE username= '$who' ";
+	$sql2 = "UPDATE table1 SET profile = '$image' WHERE posted_by= '$who' ";
+    if (!mysqli_query($conn, $sql)) {
+        die('Error: ' . mysqli_error($conn));
+    }
+	if (!mysqli_query($conn, $sql2)) {
+        die('Error: ' . mysqli_error($conn));
+    }
+}
+}
 if( !isset($_GET['user']) || empty($_GET['user']) || $_GET['user'] == NULL || $_GET['user'] == $_SESSION["username"]) {
 $_SESSION['nigga'] = $_SESSION['username'];
 $self = TRUE;
@@ -30,7 +86,7 @@ $self = FALSE;
 $order69 = FALSE;
 //echo php_egg_logo_guid();
 		 $who = mysqli_real_escape_string($conn, trim($_SESSION['nigga'], " \t\n\r\0\x0B"));
-		 $sql = "SELECT handle FROM users WHERE username = '$who'";
+		 $sql = "SELECT handle,profile FROM users WHERE username = '$who'";
 $result = $conn->query($sql);
 if ($result->num_rows > 0) {
     while($row = $result->fetch_assoc()) {
@@ -38,8 +94,14 @@ if ($result->num_rows > 0) {
 		   $hand = $row['handle'] ;
 	   }else{
 			 $hand =   $_SESSION["nigga"];
-	   } 
+	   }
+		if (isset($row['profile'])&& !empty($row['profile'])){
+		   $profile = $row['profile'] ;
+	   }else{
+			 $profile =   '/favicon.png';
+	   }
 	   $_SESSION['handle'] = $row['handle'];
+	   $_SESSION['profile'] = $row['profile'];
     }
 } elseif ($result->num_rows == 0) {
 	$_SESSION["nigga"] = $hand ='???????????';
@@ -80,31 +142,31 @@ $conn->close();
       </div>
          <div class="column middle">
 		 <p  <?php echo "".($order69 == TRUE? 'style="display:block;"' : 'style="display:none;"' )."" ?>>User not found</p>
-		 <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post" <?php echo "".($order69 == TRUE? 'style="display:none;"' : ' ' )."" ?>>
-		 <!--<input type="file" accept="image/*" name="profile" id="profile"  /> -->
-		<?php //trying to add profile pics
-echo "<img src='". (isset($row['profile'])&& !empty($row['profile'])? $row['profile'] : '/favicon.png' ) . "' style='max-widht:50px;max-height:50px;float:left;margin-right:5px;margin-top:5px' loading='lazy' alt='Image_missing'/>";
-?>
+		 <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" enctype="multipart/form-data" method="post"  <?php echo "".($order69 == TRUE? 'style="display:none;"' : ' ' )."" ?>>
+		 <input type="file" accept="image/*" name="profile" id="profile" onchange="previewprofile();editname()" />
+		<label for="profile" style="height:52px;width:52px;float:left;margin-right:5px;margin-top:5px;padding:0;text-align:center;">
+		<?php //fix profile display
+echo "<div style='width:50px;height:50px;display: table-cell;vertical-align: middle;'><img id='profile-preview' src='". $profile . "
+' style='max-height:50px;max-width:50px;display: inline-block;' loading='lazy' alt='Image_missing'/></div>";
+?></label>
 		 <p id="hand" style="display:block;font-size:1.2em;"><?php echo $hand;?>   <a onclick="editname()" <?php echo "".($self == FALSE? 'style="display:none;" disabled' : ' ' )."" ?>><i class="fas fa-pen"></i></a>
 		 <br /><span style='font-size:1em; color:#888'>@<?php echo $_SESSION["nigga"] ; ?></span></p>
-		 <div id="shit" style="display:none"><input type="text" name="newkek"  placeholder="handle" maxlength="50" style="text-align:left;max-width:200px;min-width:200px;padding-left:0;font-size:1em;"  value='<?php echo $hand; echo "'".($self == FALSE? 'disabled' : '' )."" ?>></input>
+		 <div id="shit" style="display:none"><p><input type="text" name="newkek"  placeholder="handle" maxlength="50" style="text-align:left;max-width:200px;min-width:200px;padding-left:0;font-size:1em;"  value='<?php echo $hand; echo "'".($self == FALSE? 'disabled' : '' )."" ?>></input>
 <input type="submit" value="✓" style="width:50px">
-<p style='font-size:1.2em; color:#888'>@<?php echo $_SESSION["nigga"] ; ?></p></div>
+<br /><span style='font-size:1.2em; color:#888'>@<?php echo $_SESSION["nigga"] ; ?></span></p></div>
 </form>
 <?php if ($self == TRUE) {
 	echo '<br /><hr />
             <div style="text-align:center;">
                <div class="container">
-			   
                   <form id="upload_form" enctype="multipart/form-data" method="post">
                      <textarea name="file" id="pain" placeholder="What&apos;s up, nigga?" style="text-align:left" maxlength="400"></textarea>
                      <input type="file" accept="image/*" name="image" id="image" onchange="previewImage();" />
                      <label id="name" for="image">+Add image <i class="far fa-file-image"></i> <b>?</b></label>
                      <img id="image-preview" src="." alt="" style="width:50%;max-width:200px;max-height:200px;display:none;margin-left:auto;margin-right:auto;" />
                      <progress id="progressBar" value="0" max="100" style="width:300px;"></progress>
-                     <input type="reset" value="Cancel" onclick="window.location='. $tld .'/post;" style="font-weight: bold;">
-                     <input type="button" value="Post&nbsp;&rarr;" onclick="uploadFile()">
-                     
+                     <input type="reset" value="Cancel" onclick="reset1997();" style="font-weight: bold;">
+                     <input type="button" value="Post&nbsp;&rarr;" onclick="uploadFile();this.disabled=true;">
                      <span style="display:none">
                         <p id="loaded_n_total"></p>
                      </span>
@@ -157,7 +219,8 @@ echo "<img src='". (isset($row['profile'])&& !empty($row['profile'])? $row['prof
            _('pain').value = "";
            _("image-preview").style.display = "none";
          _("progressBar").style.display = "none";
-		// window.location.replace("<?php echo $tld?>/p");
+		 //window.location.replace("<?php echo $tld?>/p");
+		 setTimeout(() => {  window.location.replace("<?php echo $tld?>/p"); }, 2000);
          }
          function errorHandler(event){
          	_("status").innerHTML = "Upload Failed";
@@ -237,5 +300,18 @@ function editname() {
   }
   document.getElementById("hand").style.display = "none";
 }
-      </script>
+
+function previewprofile() {
+    var oFReader = new FileReader();
+    oFReader.readAsDataURL(_("profile").files[0]);
+
+    oFReader.onload = function(oFREvent) {
+        _("profile-preview").src = oFREvent.target.result;
+    };
+}; 
+
+function reset1997() {
+	document.getElementById("image-preview").style.display = "none";
+}
+ </script>
 </html>

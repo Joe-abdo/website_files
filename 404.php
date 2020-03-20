@@ -1,18 +1,11 @@
 ﻿<?php 
 session_start();
- 
-// Check if the user is logged in, if not then redirect him to login page
-if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
-    $order69= TRUE;
-} else{
-	$order69= FALSE;
-}
 ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <?php
-$page_name = ' Error:404';
+<?php
+$page_name = 'Error:404';
 include_once('bj.php')
 ?>
 </head>
@@ -33,7 +26,7 @@ include_once('bj.php')
         <!-- <a href="#contact"><i class="far fa-address-card"></i><span class="hide"> Contact</span></a>-->
          <a href="/about"><i class="fas fa-info-circle"></i><span class="hide"> About</span></a>
 		 <!-- <a ><i class="fas fa-cogs"></i><span class="hide"> Settings</span></a>-->
-		 <a href="/logout.php"  <?php echo "".($order69 == TRUE? 'style="display:none;"' : 'style="float:right"' )."" ?>><i class="fas fa-sign-out-alt"></i><span class="hide"> Log out</span></a>
+		 <a href="/logout.php"  <?php echo "".((!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true)? 'style="display:none;"' : 'style="float:right"' )."" ?>><i class="fas fa-sign-out-alt"></i><span class="hide"> Log out</span></a>
         <a href="#top" class="active"><i class="fas fa-exclamation-triangle"></i><span class="hide"> Ẹ̷͕̳̦̝̹͓̲̽͆̿̄̆͒̕̕͝͝ͅr̷͙̲̲̫̪͙͍̙͑͠ŗ̶̻̲̜͌̒ō̵̫̲̲͈̮̰͍͕̎͐̊̓͝r̵̢̘̠̖̋̓̐̆̉̐͆̊̈͝ ̶̨̛̳̼̲̅͗̈̇͊͝ͅ4̸̖̹̞̙̲͔̞͔̯͈͌0̴̦̠͉̱̾̔̊̒͑̄͊͆4̴̢̧̤͙̺̠̬͖͉̤̓̅̊̒̿</span></a>
     </div>
     <div class="row">
