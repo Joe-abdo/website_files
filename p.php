@@ -80,6 +80,10 @@ if (!empty($_FILES['profile']['tmp_name']) && file_exists($_FILES['profile']['tm
 					$newFilename = mysqli_real_escape_string($conn, $_FILES["profile"]["name"] ."_". random_int(-time(), 0) . "_". uniqid() .".gif");
                     move_uploaded_file($_FILES["profile"]["tmp_name"],"./pictures/" . $newFilename);
                 }
+				if (isset($_SESSION['profile']) && !empty($_SESSION['profile'])){//delete old profile
+					$del= $_SESSION['profile'];
+					unlink($del);
+}
 				$image="pictures/" . $newFilename;
             }
         } else {
