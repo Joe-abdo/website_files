@@ -54,7 +54,7 @@ if (!empty($_FILES['profile']['tmp_name']) && file_exists($_FILES['profile']['tm
     } else {
         $check = getimagesize($_FILES["profile"]["tmp_name"]);
         if ($check !== false) {
-            if ($_FILES["profile"]["size"] > 10000000) {
+            if ($_FILES["profile"]["size"] > 5000000) {
                 echo "Sorry, your file is too large.";
                 $image = "";
             } else {
