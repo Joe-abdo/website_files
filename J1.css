@@ -282,6 +282,9 @@ input[type=file] + label , select{
 }
 textarea{
 	min-height:80px;
+	max-height:320px;
+	text-align: start;
+   unicode-bidi: plaintext;
 }
  input[type="file"]:focus + label,input[type="file"]:hover + label,
  textarea:focus,

@@ -20,8 +20,30 @@ if (!mysqli_query($conn, $sql2)) {
 die('Error: ' . mysqli_error($conn));
 }
 }
-//php to upload profle goes here
 if (isset($_FILES["profile"]) && !empty($_FILES["profile"])){
+function getImageSizeKeepAspectRatio( $imageUrl, $maxWidth, $maxHeight)
+{
+	$imageDimensions = getimagesize($imageUrl);
+
+	$imageWidth = $imageDimensions[0];
+	$imageHeight = $imageDimensions[1];
+
+	$imageSize['width'] = $imageWidth;
+	$imageSize['height'] = $imageHeight;
+
+	if($imageWidth > $maxWidth || $imageHeight > $maxHeight)
+	{
+		if ( $imageWidth > $imageHeight ) {
+	    	$imageSize['height'] = floor(($imageHeight/$imageWidth)*$maxWidth);
+  			$imageSize['width']  = $maxWidth;
+		} else {
+			$imageSize['width']  = floor(($imageWidth/$imageHeight)*$maxHeight);
+			$imageSize['height'] = $maxHeight;
+		}
+	}
+
+	return $imageSize;
+}
 	$image_name = mysqli_real_escape_string($conn, strtolower($_FILES['profile']['name']));
 if (!empty($_FILES['profile']['tmp_name']) && file_exists($_FILES['profile']['tmp_name'])) {
     $allowed = array('gif', 'png', 'jpg', 'jpeg');
@@ -38,20 +60,24 @@ if (!empty($_FILES['profile']['tmp_name']) && file_exists($_FILES['profile']['tm
             } else {
                 if ($ext != 'gif') {
 					$newFilename = mysqli_real_escape_string($conn, $_FILES["profile"]["name"] ."_". random_int(-time(), 0) . "_". uniqid() .".webp");
-                    if ($ext == 'jpg' || $ext == 'jpeg') {
+                    
+					list($width, $height) = getimagesize($_FILES['profile']['tmp_name']);
+					$new_width = getImageSizeKeepAspectRatio($_FILES['profile']['tmp_name'],100,100)['width'];
+					$new_height = getImageSizeKeepAspectRatio($_FILES['profile']['tmp_name'],100,100)['height'];
+					$image_p = imagecreatetruecolor($new_width, $new_height);
+					imagealphablending($image_p, false);
+					imagesavealpha($image_p,true);
+					if ($ext == 'jpg' || $ext == 'jpeg') {
                         $img = imagecreatefromjpeg($_FILES['profile']['tmp_name']);
-						imagewebp($img, "./pictures/" . $newFilename, 70);
-						list($width, $height) = getimagesize($_FILES['profile']['tmp_name']);
-						imagedestroy($img);
                     } elseif ($ext == 'png') {
                         $img = imagecreatefrompng($_FILES['profile']['tmp_name']);
-						imagewebp($img, "./pictures/" . $newFilename, 70);
-						list($width, $height) = getimagesize($_FILES['profile']['tmp_name']);
-						imagedestroy($img);
                     }
+					imagecopyresampled($image_p, $img, 0, 0, 0, 0, $new_width, $new_height, $width, $height);
+					imagewebp($image_p, "./pictures/" . $newFilename, 50);//send image to folder
+					imagedestroy($image_p);
+					
                 } elseif ($ext == 'gif') {
 					$newFilename = mysqli_real_escape_string($conn, $_FILES["profile"]["name"] ."_". random_int(-time(), 0) . "_". uniqid() .".gif");
-					list($width, $height) = getimagesize($_FILES['profile']['tmp_name']);
                     move_uploaded_file($_FILES["profile"]["tmp_name"],"./pictures/" . $newFilename);
                 }
 				$image="pictures/" . $newFilename;
@@ -144,11 +170,20 @@ $conn->close();
 		 <p  <?php echo "".($order69 == TRUE? 'style="display:block;"' : 'style="display:none;"' )."" ?>>User not found</p>
 		 <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" enctype="multipart/form-data" method="post"  <?php echo "".($order69 == TRUE? 'style="display:none;"' : ' ' )."" ?>>
 		 <input type="file" accept="image/*" name="profile" id="profile" onchange="previewprofile();editname()" />
-		<label for="profile" style="height:52px;width:52px;float:left;margin-right:5px;margin-top:5px;padding:0;text-align:center;">
-		<?php //fix profile display
-echo "<div style='width:50px;height:50px;display: table-cell;vertical-align: middle;'><img id='profile-preview' src='". $profile . "
-' style='max-height:50px;max-width:50px;display: inline-block;' loading='lazy' alt='Image_missing'/></div>";
-?></label>
+		
+		<?php
+if ($self == TRUE){
+	echo "<label for='profile' style='height:52px;width:52px;float:left;margin-right:5px;margin-top:5px;padding:0;text-align:center;'>
+	<div style='width:50px;height:50px;display: table-cell;vertical-align: middle;'><img id='profile-preview' src='". $profile . "
+' style='max-height:50px;max-width:50px;display: inline-block;' loading='lazy' alt='Image_missing'/></div>
+</label>";
+} elseif($self == FALSE) {
+	echo"<div style='height:52px;width:52px;float:left;margin-right:5px;margin-top:5px;padding:0;text-align:center;border:0;'>
+		<div style='width:50px;height:50px;display: table-cell;vertical-align: middle;'><img id='profile-preview' src='". $profile . "
+' style='max-height:50px;max-width:50px;display: inline-block;' loading='lazy' alt='Image_missing'/></div></div>";
+}
+
+?>
 		 <p id="hand" style="display:block;font-size:1.2em;"><?php echo $hand;?>   <a onclick="editname()" <?php echo "".($self == FALSE? 'style="display:none;" disabled' : ' ' )."" ?>><i class="fas fa-pen"></i></a>
 		 <br /><span style='font-size:1em; color:#888'>@<?php echo $_SESSION["nigga"] ; ?></span></p>
 		 <div id="shit" style="display:none"><p><input type="text" name="newkek"  placeholder="handle" maxlength="50" style="text-align:left;max-width:200px;min-width:200px;padding-left:0;font-size:1em;"  value='<?php echo $hand; echo "'".($self == FALSE? 'disabled' : '' )."" ?>></input>
@@ -160,7 +195,7 @@ echo "<div style='width:50px;height:50px;display: table-cell;vertical-align: mid
             <div style="text-align:center;">
                <div class="container">
                   <form id="upload_form" enctype="multipart/form-data" method="post">
-                     <textarea name="file" id="pain" placeholder="What&apos;s up, nigga?" style="text-align:left" maxlength="400"></textarea>
+                     <textarea name="file" id="pain" placeholder="What&apos;s up, nigga?" maxlength="600"></textarea>
                      <input type="file" accept="image/*" name="image" id="image" onchange="previewImage();" />
                      <label id="name" for="image">+Add image <i class="far fa-file-image"></i> <b>?</b></label>
                      <img id="image-preview" src="." alt="" style="width:50%;max-width:200px;max-height:200px;display:none;margin-left:auto;margin-right:auto;" />

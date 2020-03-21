@@ -49,7 +49,6 @@ include_once('bj.php')
             <div class="card">
                 <h3>Future updates:</h3>
                 <ul>
-				<li>profile pics</li>
 				<li>bio and follow</li>
 				<li>messaging</li>
                     <li>Better image loading</li>

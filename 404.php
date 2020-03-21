@@ -32,9 +32,24 @@ include_once('bj.php')
     <div class="row">
         <div class="leftcolumn">
             <div class='card'>
-                <p style='color:grey;font-size:13px'>id: ̸̸̶̵̸̶̴̷̸̷̧̏̆́͋͘͠█̷̴̶̸̵̸̶̶̠̃̑̕͠- </p>
-                <p>Congratulations! You have found the super secret post,hidden from everyone else... I'm kidding,you just entered a wrong link. Anyhow, nice to see you.</p>
+			<!--<p style='color:grey;font-size:13px'>id: ̸̸̶̵̸̶̴̷̸̷̧̏̆́͋͘͠█̷̴̶̸̵̸̶̶̠̃̑̕͠- </p>-->
+				<div style='height:52px;width:52px;float:left;margin-right:5px;margin-top:5px;padding:0;text-align:center;border:0;'>
+		<div style='width:50px;height:50px;display: table-cell;vertical-align: middle;'><img id='profile-preview' src='/favicon.png
+' style='max-height:50px;max-width:50px;display: inline-block;' loading='lazy' alt='Image_missing'/></div></div>
+<p style='font-size:1.2em;margin-top:5px;'>???<br />
+		<a style='text-decoration:none;font-size:1em;color:#888' href="<?php echo $tld?>/">@???????</a></p>
+                <p>Congratulations! You have found the super secret post,hidden from everyone else... I'm kidding, you entered a wrong link. Anyhow, nice to see you.</p>
                 <p style='color:grey;font-size:13px;text-align:right;'>31 Feb -0001 at 12:00 am</p>
+            </div>
+			<div class='card'>
+			<!--<p style='color:grey;font-size:13px'>id: ̸̸̶̵̸̶̴̷̸̷̧̏̆́͋͘͠█̷̴̶̸̵̸̶̶̠̃̑̕͠- </p>-->
+				<div style='height:52px;width:52px;float:left;margin-right:5px;margin-top:5px;padding:0;text-align:center;border:0;'>
+		<div style='width:50px;height:50px;display: table-cell;vertical-align: middle;'><img id='profile-preview' src='/favicon.png
+' style='max-height:50px;max-width:50px;display: inline-block;' loading='lazy' alt='Image_missing'/></div></div>
+<p style='font-size:1.2em;margin-top:5px;'>The website<br />
+		<a style='text-decoration:none;font-size:1em;color:#888' href="<?php echo $tld?>/">@Joe-abdo</a></p>
+                <p>Where the fuck am I ?!?!???!?!!</p>
+                <p style='color:grey;font-size:13px;text-align:right;'>1st January 1970 at 12:00 am</p>
             </div>
         </div>
         <div class="rightcolumn">
