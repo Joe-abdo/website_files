@@ -17,7 +17,7 @@ if ($result->num_rows > 0) {
     while ($row = $result->fetch_assoc()) {
         //echo "<p style='color:grey;font-size:13px'>id:" . $row["id"] . "-</p>";
 		echo "
-		<div class='card' dir='auto'>
+		<div class='card' >
 		<div style='height:52px;width:52px;float:left;margin-right:5px;margin-top:5px;padding:0;text-align:center;border:0;'>
 		<div style='width:50px;height:50px;display: table-cell;vertical-align: middle;'><img id='profile-preview' src='". (isset($row['profile'])&& !empty($row['profile'])? $row['profile'] : '/favicon.png' ) . "
 ' style='max-height:50px;max-width:50px;display: inline-block;' loading='lazy' alt='Image_missing'/></div></div>

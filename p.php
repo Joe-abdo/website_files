@@ -1,8 +1,6 @@
 <?php
-// Initialize the session
 session_start();
  
-// Check if the user is logged in, if not then redirect him to login page
 if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
     header("location: login.php");
     exit;
@@ -73,7 +71,7 @@ if (!empty($_FILES['profile']['tmp_name']) && file_exists($_FILES['profile']['tm
                         $img = imagecreatefrompng($_FILES['profile']['tmp_name']);
                     }
 					imagecopyresampled($image_p, $img, 0, 0, 0, 0, $new_width, $new_height, $width, $height);
-					imagewebp($image_p, "./pictures/" . $newFilename, 50);//send image to folder
+					imagewebp($image_p, "./pictures/" . $newFilename, 90);//send image to folder
 					imagedestroy($image_p);
 					
                 } elseif ($ext == 'gif') {
@@ -106,11 +104,11 @@ if (!empty($image)) {
     }
 }
 }
-if( !isset($_GET['user']) || empty($_GET['user']) || $_GET['user'] == NULL || $_GET['user'] == $_SESSION["username"]) {
-$_SESSION['nigga'] = $_SESSION['username'];
+if( !isset($_GET['user']) || empty($_GET['user']) || $_GET['user'] == NULL || strtolower ($_GET['user']) == strtolower ($_SESSION["username"])) {
+$_SESSION['nigga'] = strtolower($_SESSION['username']);
 $self = TRUE;
 } else{
-$_SESSION['nigga'] = $_GET['user'];
+$_SESSION['nigga'] = strtolower($_GET['user']);
 $self = FALSE;
 }
 $order69 = FALSE;
@@ -165,7 +163,6 @@ $conn->close();
          <div class="topnav" id="myTopnav">
          <a href="<?php echo $tld?>/" ><i class="fas fa-home"></i><span class="hide"> Home</span></a>
          <a <?php echo "".($self == TRUE? 'class="active" href="#top"' : 'href="'. $tld .'/p?user='.$_SESSION["username"].'"' )."" ?>><i class="fas fa-user"></i><span class="hide"> Profile</span></a>
-        <!-- <a href="#contact"><i class="far fa-address-card"></i><span class="hide"> Contact</span></a>-->
          <a href="/about" ><i class="fas fa-info-circle"></i><span class="hide"> About</span></a>
 		 <!-- <a ><i class="fas fa-cogs"></i><span class="hide"> Settings</span></a>-->
 		 <a href="/logout.php"  style="float:right"><i class="fas fa-sign-out-alt"></i><span class="hide"> Log out</span></a>
@@ -176,7 +173,7 @@ $conn->close();
 		 <input type="file" accept="image/*" name="profile" id="profile" onchange="previewprofile();editname()" />
 		
 		<?php
-if ($self == TRUE){
+if ($self == TRUE){//need to put pen icon at bottom right
 	echo "<label for='profile' style='height:52px;width:52px;float:left;margin-right:5px;margin-top:5px;padding:0;text-align:center;'>
 	<div style='width:50px;height:50px;display: table-cell;vertical-align: middle;'><img id='profile-preview' src='". $profile . "
 ' style='max-height:50px;max-width:50px;display: inline-block;' loading='lazy' alt='Image_missing'/></div>
